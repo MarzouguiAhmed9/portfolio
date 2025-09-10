@@ -15,239 +15,51 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --bg1:#1a1a2e; --bg2:#16213e; --text:#ffffff; --muted:#b8c6db;
+            --accent:#00ff88; --accent2:#3282b8; --card:rgba(255,255,255,0.10); --glass-border:rgba(255,255,255,0.18);
+            --ctaText:#16213e;
+        }
+        [data-theme="light"] {
+            --bg1:#f6f9fc; --bg2:#eaf2f8; --text:#0d1b2a; --muted:#4b5563;
+            --accent:#00c97a; --accent2:#0f4c75; --card:rgba(13,27,42,0.05); --glass-border:rgba(13,27,42,0.08);
+            --ctaText:#0d1b2a;
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e 80%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2) 80%);
+            color: var(--text);
             margin: 0;
             padding: 0;
         }
-        .glass {
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.18);
-        }
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #00ff88;
-            letter-spacing: 2px;
-        }
-        .divider {
-            border-top: 2px solid #3282b8;
-            margin: 2rem 0;
-        }
-        .navbar {
-            background: rgba(22,33,62,0.6)!important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: background .3s ease;
-        }
+        .glass { background: var(--card); border: 1px solid var(--glass-border); }
+        .section-title { color: var(--accent); }
+        .navbar { background: rgba(22,33,62,0.6)!important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: background .3s ease; }
         .navbar.scrolled { background: rgba(22,33,62,0.9)!important; }
-        .navbar-brand {
-            font-weight: 700;
-            color: #00ff88!important;
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link.active { position: relative; }
-        .nav-link.active:after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#00ff88; border-radius:2px; }
-        .nav-link:hover {
-            color: #00ff88!important;
-        }
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            background: linear-gradient(120deg, #1a1a2e 60%, #3282b8 100%);
-        }
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #00ff88;
-            margin-bottom: 1rem;
-        }
-        .hero-sub {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            background: #00ff88;
-            color: #16213e;
-            font-weight: 700;
-            border-radius: 30px;
-            padding: 0.75rem 2rem;
-            border: none;
-            transition: background 0.3s;
-            box-shadow: 0 8px 24px rgba(0,255,136,0.18);
-        }
-        .cta-btn:hover {
-            background: #3282b8;
-            color: #fff;
-            box-shadow: 0 10px 28px rgba(50,130,184,0.25);
-        }
-        .about-img {
-            width: 120px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 3px solid #00ff88;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-        .skill-card {
-            min-width: 120px;
-            max-width: 180px;
-            background: rgba(255,255,255,0.10);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-        }
-        .skill-card:hover {
-            transform: scale(1.08);
-            background: rgba(0,255,136,0.15);
-        }
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #3282b8;
-        }
-        .progress {
-            height: 8px;
-            background: #16213e;
-            border-radius: 4px;
-        }
-        .progress-bar {
-            background: linear-gradient(90deg, #0f4c75, #00ff88);
-        }
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #00ff88;
-            transform: translateX(-50%);
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            width: 48%;
-        }
-        .timeline-item.left {
-            left: 0;
-            text-align: right;
-        }
-        .timeline-item.right {
-            left: 52%;
-            text-align: left;
-        }
-        .timeline-item .content {
-            display: inline-block;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.10);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background: rgba(255,255,255,0.10);
-            border:1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: scale(1.04);
-            box-shadow:0 10px 30px rgba(0,255,136,0.15);
-        }
-        .project-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #00ff88;
-            margin-top: 1rem;
-        }
-        .education-list, .languages-list {
-            list-style: none;
-            padding: 0;
-        }
-        .education-list li, .languages-list li {
-            background: rgba(255,255,255,0.10);
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 10px;
-        }
-        .contact-form {
-            max-width: 500px;
-            margin: auto;
-        }
-        .footer {
-            background: #16213e;
-            text-align: center;
-            padding: 2rem 0 1rem 0;
-            color: #fff;
-        }
-        .footer a {
-            color: #00ff88;
-            margin: 0 10px;
-            font-size: 1.5rem;
-        }
-        @media (max-width: 900px) {
-            .timeline-item {
-                width: 100%;
-                left: 0!important;
-                text-align: left!important;
-            }
-        }
-        @keyframes fadein {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadein {
-            opacity: 0;
-            animation: fadein 1.2s forwards;
-        }
-        .animate-fadein[style*='animation-delay:0.3s'] { animation-delay: 0.3s; }
-        .animate-fadein[style*='animation-delay:0.6s'] { animation-delay: 0.6s; }
-        /* Experience enhancements */
-        .xp-meta { color: #b8c6db; font-size: 0.95rem; margin: .25rem 0 .75rem; }
-        .tech-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
-        .tech-badge { padding:.25rem .6rem; border-radius:999px; font-size:.8rem; color:#00ff88; background:rgba(0,255,136,0.12); border:1px solid rgba(0,255,136,0.35); }
+        .navbar-brand { color: var(--accent)!important; }
+        .nav-link.active:after { background: var(--accent); }
+        .hero { background: linear-gradient(120deg, var(--bg1) 60%, var(--accent2) 100%); }
+        .hero-title { color: var(--accent); }
+        .cta-btn { background: var(--accent); color: var(--ctaText); box-shadow: 0 8px 24px rgba(0,255,136,0.18); }
+        .cta-btn:hover { background: var(--accent2); color: #fff; box-shadow: 0 10px 28px rgba(50,130,184,0.25); }
+        .skill-card:hover { background: rgba(0,255,136,0.15); }
+        .project-card { background: var(--card); border:1px solid rgba(255,255,255,0.12); }
+        .project-card:hover { box-shadow:0 10px 30px rgba(0,255,136,0.15); }
+        .project-title { color: var(--accent); }
+        .xp-meta { color: var(--muted); }
+        .footer { background: var(--bg2); color: var(--text); }
+        /* Filter pills */
+        .filter-bar { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+        .filter-pill { padding:.35rem .8rem; border-radius:999px; border:1px solid rgba(255,255,255,0.18); background:transparent; color:var(--text); cursor:pointer; font-size:.9rem; }
+        .filter-pill.active, .filter-pill:hover { background: var(--accent); color: var(--ctaText); border-color: transparent; }
         /* Section reveal */
         .section { opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
         .section.in-view { opacity:1; transform:none; }
         /* Back to top */
-        #backToTop { position:fixed; right:20px; bottom:24px; z-index:999; display:none; border:none; border-radius:50%; width:44px; height:44px; background:#00ff88; color:#16213e; box-shadow:0 10px 24px rgba(0,255,136,0.25); }
-        #backToTop:hover { background:#28e4a1; }
+        #backToTop { position:fixed; right:20px; bottom:24px; z-index:999; display:none; border:none; border-radius:50%; width:44px; height:44px; background:var(--accent); color:var(--ctaText); box-shadow:0 10px 24px rgba(0,255,136,0.25); }
+        #backToTop:hover { filter:brightness(1.05); }
+        /* Remove unused old helpers */
+        /* removed .skill-icon, .progress, .progress-bar */
     </style>
 </head>
 <body>
@@ -267,6 +79,9 @@
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button id="themeToggle" class="btn btn-sm btn-outline-success" type="button" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -373,8 +188,15 @@
     <section id="projects" class="section">
         <div class="container glass p-4">
             <h2 class="section-title">Projects</h2>
+            <div class="filter-bar">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="cloud">Cloud</button>
+                <button class="filter-pill" data-filter="kubernetes">Kubernetes</button>
+                <button class="filter-pill" data-filter="ci-cd">CI/CD</button>
+                <button class="filter-pill" data-filter="security">Security</button>
+            </div>
             <div class="project-gallery">
-                <div class="project-card">
+                <div class="project-card" data-tags="terraform,aws,cloud,networking,infrastructure">
                     <img src="images/terraform.png" class="project-img" alt="Terraform VPC Automation">
                     <div class="project-title">Terraform VPC Automation</div>
                     <div class="p-3">
@@ -386,7 +208,7 @@
                         <a href="https://github.com/MarzouguiAhmed9/vpc-terraform-project" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="ansible,kvm,virtualization,devops">
                     <img src="images/kvm.jpg" class="project-img" alt="Automated KVM Virtual Lab">
                     <div class="project-title">Automated KVM Virtual Lab</div>
                     <div class="p-3">
@@ -399,7 +221,7 @@
                         <a href="https://github.com/MarzouguiAhmed9/automated-kvm-virtual-lab" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="aws,cloud,architecture">
                     <img src="images/aws2.jpeg" class="project-img" alt="AWS 3-Tier Architecture">
                     <div class="project-title">AWS 3-Tier Architecture</div>
                     <div class="p-3">
@@ -410,7 +232,7 @@
                         <a href="https://github.com/MarzouguiAhmed9/3-Tier-Architecture-On-AWS" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="kubernetes,helm,eks,gitlab,ci-cd">
                     <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
                     <div class="project-title">Helm Chart Deployment to EKS with GitLab CI/CD</div>
                     <div class="p-3">
@@ -422,7 +244,7 @@
                         <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="serverless,aws,lambda,security">
                     <img src="images/aws3.png" class="project-img" alt="Collaborative File Sharing Platform">
                     <div class="project-title">Collaborative File Sharing Platform</div>
                     <div class="p-3">
@@ -434,7 +256,7 @@
                         <span>Secure, scalable, and cost-efficient file sharing</span>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="openstack,cloud,ai,kubernetes">
                     <img src="images/openstack1.jpeg" class="project-img" alt="OpenStack Private Cloud">
                     <div class="project-title">OpenStack Private Cloud & AI Platform</div>
                     <div class="p-3">
@@ -446,7 +268,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="aws,ecs,ci-cd,spring">
                     <img src="images/aws.jpeg" class="project-img" alt="Spring Boot on AWS ECS Fargate">
                     <div class="project-title">Spring Boot on AWS ECS Fargate</div>
                     <div class="p-3">
@@ -458,7 +280,7 @@
                         <a href="https://github.com/MarzouguiAhmed9/spring-aws" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="ci-cd,jenkins,kubernetes,docker">
                     <img src="images/cicd.jpeg" class="project-img" alt="CI/CD Pipeline for Node.js on Kubernetes">
                     <div class="project-title">CI/CD Pipeline for Node.js on Kubernetes</div>
                     <div class="p-3">
@@ -468,7 +290,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-tags="ci-cd,jenkins,ansible,aws">
                     <img src="images/cicd2.jpeg" class="project-img" alt="CI/CD Pipeline Optimization">
                     <div class="project-title">CI/CD Pipeline Optimization</div>
                     <div class="p-3">
@@ -662,6 +484,39 @@
                     const collapse = bootstrap.Collapse.getOrCreateInstance(bsCollapse);
                     collapse.hide();
                 }
+            }));
+        })();
+        // Theme toggle with persistence
+        (function(){
+            const root = document.documentElement;
+            const btn = document.getElementById('themeToggle');
+            const saved = localStorage.getItem('theme');
+            if(saved){ root.setAttribute('data-theme', saved); updateIcon(saved); }
+            function updateIcon(theme){
+                if(!btn) return; const i = btn.querySelector('i');
+                if(theme==='light'){ i.classList.remove('fa-moon'); i.classList.add('fa-sun'); btn.classList.remove('btn-outline-success'); btn.classList.add('btn-success'); }
+                else { i.classList.remove('fa-sun'); i.classList.add('fa-moon'); btn.classList.add('btn-outline-success'); btn.classList.remove('btn-success'); }
+            }
+            btn&&btn.addEventListener('click',()=>{
+                const next = root.getAttribute('data-theme')==='light' ? 'dark' : 'light';
+                if(next==='dark') root.removeAttribute('data-theme'); else root.setAttribute('data-theme','light');
+                localStorage.setItem('theme', next);
+                updateIcon(next);
+            });
+        })();
+        // Project filtering
+        (function(){
+            const pills = document.querySelectorAll('.filter-pill');
+            const cards = document.querySelectorAll('.project-card');
+            pills.forEach(p=>p.addEventListener('click', ()=>{
+                pills.forEach(x=>x.classList.remove('active'));
+                p.classList.add('active');
+                const f = p.dataset.filter;
+                cards.forEach(c=>{
+                    const tags = (c.dataset.tags||'').toLowerCase();
+                    const show = f==='all' || tags.includes(f);
+                    c.style.display = show ? '' : 'none';
+                });
             }));
         })();
     </script>
