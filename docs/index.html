@@ -15,10 +15,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root{
+            --bg-1:#0B1021;
+            --bg-2:#111827;
+            --accent:#22D3EE;      /* cyan */
+            --accent-2:#7C3AED;    /* violet */
+            --text:#ffffff;
+            --muted:#b8c6db;
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e 80%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2) 80%);
+            color: var(--text);
             margin: 0;
             padding: 0;
         }
@@ -33,11 +41,11 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #00ff88;
+            color: var(--accent);
             letter-spacing: 2px;
         }
         .divider {
-            border-top: 2px solid #3282b8;
+            border-top: 2px solid var(--accent-2);
             margin: 2rem 0;
         }
         .navbar {
@@ -49,15 +57,13 @@
         .navbar.scrolled { background: rgba(22,33,62,0.9)!important; }
         .navbar-brand {
             font-weight: 700;
-            color: #00ff88!important;
+            color: var(--accent)!important;
         }
-        .nav-link {
-            position: relative;
-        }
+        .nav-link { position: relative; }
         .nav-link.active { position: relative; }
-        .nav-link.active:after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#00ff88; border-radius:2px; }
+        .nav-link.active:after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--accent); border-radius:2px; }
         .nav-link:hover {
-            color: #00ff88!important;
+            color: var(--accent)!important;
         }
         .hero {
             min-height: 100vh;
@@ -66,77 +72,43 @@
             justify-content: center;
             flex-direction: column;
             text-align: center;
-            background: linear-gradient(120deg, #1a1a2e 60%, #3282b8 100%);
+            background: linear-gradient(120deg, var(--bg-1) 60%, var(--accent-2) 100%);
         }
         .hero-title {
             font-size: 3rem;
             font-weight: 800;
-            color: #00ff88;
+            color: var(--accent);
             margin-bottom: 1rem;
         }
-        .hero-sub {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 2rem;
-        }
+        .hero-sub { font-size: 1.5rem; color: #fff; margin-bottom: 2rem; }
         .cta-btn {
-            background: #00ff88;
-            color: #16213e;
+            background: var(--accent);
+            color: #0B1021;
             font-weight: 700;
             border-radius: 30px;
             padding: 0.75rem 2rem;
             border: none;
             transition: background 0.3s;
-            box-shadow: 0 8px 24px rgba(0,255,136,0.18);
+            box-shadow: 0 8px 24px rgba(34,211,238,0.18);
         }
         .cta-btn:hover {
-            background: #3282b8;
+            background: var(--accent-2);
             color: #fff;
-            box-shadow: 0 10px 28px rgba(50,130,184,0.25);
+            box-shadow: 0 10px 28px rgba(124,58,237,0.25);
         }
         .about-img {
             width: 120px;
             border-radius: 50%;
             margin-bottom: 1rem;
-            border: 3px solid #00ff88;
+            border: 3px solid var(--accent);
         }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-        .skill-card {
-            min-width: 120px;
-            max-width: 180px;
-            background: rgba(255,255,255,0.10);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-        }
-        .skill-card:hover {
-            transform: scale(1.08);
-            background: rgba(0,255,136,0.15);
-        }
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #3282b8;
-        }
-        .progress {
-            height: 8px;
-            background: #16213e;
-            border-radius: 4px;
-        }
-        .progress-bar {
-            background: linear-gradient(90deg, #0f4c75, #00ff88);
-        }
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+        .skill-card { min-width: 120px; max-width: 180px; background: rgba(255,255,255,0.10); border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s; }
+        .skill-card:hover { transform: scale(1.08); background: rgba(34,211,238,0.10); }
+        .skill-icon { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent-2); }
+        .progress { height: 8px; background: #16213e; border-radius: 4px; }
+        .progress-bar { background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+        .timeline { position: relative; padding: 2rem 0; }
         .timeline:before {
             content: '';
             position: absolute;
@@ -144,110 +116,43 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: #00ff88;
+            background: var(--accent);
             transform: translateX(-50%);
         }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            width: 48%;
-        }
-        .timeline-item.left {
-            left: 0;
-            text-align: right;
-        }
-        .timeline-item.right {
-            left: 52%;
-            text-align: left;
-        }
-        .timeline-item .content {
-            display: inline-block;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.10);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background: rgba(255,255,255,0.10);
-            border:1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: scale(1.04);
-            box-shadow:0 10px 30px rgba(0,255,136,0.15);
-        }
-        .project-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #00ff88;
-            margin-top: 1rem;
-        }
-        .education-list, .languages-list {
-            list-style: none;
-            padding: 0;
-        }
-        .education-list li, .languages-list li {
-            background: rgba(255,255,255,0.10);
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 10px;
-        }
-        .contact-form {
-            max-width: 500px;
-            margin: auto;
-        }
-        .footer {
-            background: #16213e;
-            text-align: center;
-            padding: 2rem 0 1rem 0;
-            color: #fff;
-        }
-        .footer a {
-            color: #00ff88;
-            margin: 0 10px;
-            font-size: 1.5rem;
-        }
+        .timeline-item { position: relative; margin-bottom: 2rem; width: 48%; }
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 52%; text-align: left; }
+        .timeline-item .content { display: inline-block; padding: 1.5rem; background: rgba(255,255,255,0.10); border-radius: 10px; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .project-card { background: rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.12); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s; }
+        .project-card:hover { transform: scale(1.04); box-shadow:0 10px 30px rgba(124,58,237,0.18); }
+        .project-img { width: 100%; height: 180px; object-fit: cover; }
+        .project-title { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 1rem; }
+        .education-list, .languages-list { list-style: none; padding: 0; }
+        .education-list li, .languages-list li { background: rgba(255,255,255,0.10); margin-bottom: 1rem; padding: 1rem; border-radius: 10px; }
+        .contact-form { max-width: 500px; margin: auto; }
+        .footer { background: #16213e; text-align: center; padding: 2rem 0 1rem 0; color: #fff; }
+        .footer a { color: var(--accent); margin: 0 10px; font-size: 1.5rem; }
         @media (max-width: 900px) {
-            .timeline-item {
-                width: 100%;
-                left: 0!important;
-                text-align: left!important;
-            }
+            .timeline-item { width: 100%; left: 0!important; text-align: left!important; }
         }
-        @keyframes fadein {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadein {
-            opacity: 0;
-            animation: fadein 1.2s forwards;
-        }
+        @keyframes fadein { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadein { opacity: 0; animation: fadein 1.2s forwards; }
         .animate-fadein[style*='animation-delay:0.3s'] { animation-delay: 0.3s; }
         .animate-fadein[style*='animation-delay:0.6s'] { animation-delay: 0.6s; }
         /* Experience enhancements */
-        .xp-meta { color: #b8c6db; font-size: 0.95rem; margin: .25rem 0 .75rem; }
+        .xp-meta { color: var(--muted); font-size: 0.95rem; margin: .25rem 0 .75rem; }
         .tech-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
-        .tech-badge { padding:.25rem .6rem; border-radius:999px; font-size:.8rem; color:#00ff88; background:rgba(0,255,136,0.12); border:1px solid rgba(0,255,136,0.35); }
+        .tech-badge { padding:.25rem .6rem; border-radius:999px; font-size:.8rem; color:var(--accent); background:rgba(34,211,238,0.12); border:1px solid rgba(34,211,238,0.35); }
+        /* Impact badges */
+        .impact-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin:.25rem 0 .5rem; }
+        .impact-badge { padding:.25rem .6rem; border-radius:8px; font-size:.8rem; background: rgba(124,58,237,0.18); border:1px solid rgba(124,58,237,0.35); color:#E0E7FF; }
         /* Section reveal */
         .section { opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
         .section.in-view { opacity:1; transform:none; }
         /* Back to top */
-        #backToTop { position:fixed; right:20px; bottom:24px; z-index:999; display:none; border:none; border-radius:50%; width:44px; height:44px; background:#00ff88; color:#16213e; box-shadow:0 10px 24px rgba(0,255,136,0.25); }
-        #backToTop:hover { background:#28e4a1; }
+        #backToTop { position:fixed; right:20px; bottom:24px; z-index:999; display:none; border:none; border-radius:50%; width:44px; height:44px; background:var(--accent); color:#0B1021; box-shadow:0 10px 24px rgba(34,211,238,0.25); }
+        #backToTop:hover { background:#2bdcf0; }
     </style>
 </head>
 <body>
@@ -285,16 +190,18 @@
     </section>
     <div class="divider"></div>
     <section id="about" class="section">
-        <div class="container glass p-4" style="background: linear-gradient(120deg, #16213e 60%, #3282b8 100%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);">
+        <div class="container glass p-4" style="background: linear-gradient(120deg, var(--bg-1) 60%, var(--accent-2) 100%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);">
             <div class="row align-items-center">
                 <div class="col-md-5 text-center">
-                    <img src="images/cv.jpg" alt="Ahmed Marzougui" class="about-img" style="width:260px;max-width:100%;border-radius:24px;box-shadow:0 4px 24px rgba(0,255,136,0.2);margin-bottom:2rem;">
+                    <img src="images/cv.jpg" alt="Ahmed Marzougui" class="about-img" style="width:260px;max-width:100%;border-radius:24px;box-shadow:0 4px 24px rgba(34,211,238,0.2);margin-bottom:2rem;">
                 </div>
                 <div class="col-md-7">
-                    <h2 class="section-title" style="font-size:3rem;letter-spacing:3px;color:#00ff88;text-shadow:0 2px 8px #3282b8;">About Me</h2>
-                    <p style="font-size:1.5rem;font-weight:600;line-height:1.6;color:#fff;background:rgba(0,255,136,0.08);padding:1.5rem 2rem;border-radius:18px;box-shadow:0 2px 8px #3282b8;">I am a <span style="color:#00ff88;font-weight:700;">final-year engineering student</span> specializing in <span style="color:#3282b8;font-weight:700;">IT Infrastructure & Cloud Computing</span>. Passionate about <span style="color:#00ff88;font-weight:700;">Kubernetes, CI/CD, Terraform, and AWS</span>, I am seeking a <span style="color:#3282b8;font-weight:700;">6-month full-time graduation internship in Cloud/DevOps</span> starting December 2025.<br><br>Motivated, adaptable, and eager to contribute to <span style="color:#00ff88;font-weight:700;">cloud-native environments</span> and innovative teams.</p>
+                    <h2 class="section-title" style="font-size:3rem;letter-spacing:3px;color:var(--accent);text-shadow:0 2px 8px var(--accent-2);">About Me</h2>
+                    <p style="font-size:1.5rem;font-weight:600;line-height:1.6;color:#fff;background:rgba(34,211,238,0.10);padding:1.5rem 2rem;border-radius:18px;box-shadow:0 2px 8px var(--accent-2);">
+                        I am a <span style="color:var(--accent);font-weight:700;">final-year engineering student</span> specializing in <span style="color:var(--accent-2);font-weight:700;">IT Infrastructure & Cloud Computing</span>. Passionate about <span style="color:var(--accent);font-weight:700;">Kubernetes, CI/CD, Terraform, and AWS</span>, I am seeking a <span style="color:var(--accent-2);font-weight:700;">6-month full-time graduation internship in Cloud/DevOps</span> starting December 2025.<br><br>Motivated, adaptable, and eager to contribute to <span style="color:var(--accent);font-weight:700;">cloud-native environments</span> and innovative teams.
+                    </p>
                     <div class="text-center mt-4">
-                        <a href="CV.pdf" class="cta-btn" style="background:#3282b8;color:#fff;box-shadow:0 2px 8px #00ff88;font-size:1.2rem;padding:1rem 2.5rem;" download><i class="fas fa-download"></i> Download CV</a>
+                        <a href="CV.pdf" class="cta-btn" style="background:var(--accent-2);color:#fff;box-shadow:0 2px 8px var(--accent);font-size:1.2rem;padding:1rem 2.5rem;" download><i class="fas fa-download"></i> Download CV</a>
                     </div>
                 </div>
             </div>
@@ -491,12 +398,19 @@
                     <div class="content d-flex align-items-center">
                         <img src="images/ST2I.jpeg" alt="ST2I" style="width:110px;height:110px;object-fit:cover;border-radius:16px;margin-right:1.25rem;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
                         <div>
-                            <h5 style="color:#00ff88;font-weight:800;margin:0;">DevSecOps Intern — ST2I</h5>
+                            <h5 style="color:var(--accent);font-weight:800;margin:0;">DevSecOps Intern — ST2I</h5>
                             <div class="xp-meta">Tunisia • Jun 2025 – Sep 2025</div>
                             <ul style="margin-bottom:.5rem;">
-                                <li>Shipped Spring Boot microservices on OpenShift with Helm & RBAC; −87% deploy time across 3 envs; +35% SonarQube score.</li>
-                                <li>Adopted GitOps with Argo CD; CI/CD (GitLab, Trivy, SonarQube, Prometheus, Grafana); 99.5% uptime; 95% vulns caught pre-prod.</li>
+                                <li>Migrated Spring Boot microservices to OpenShift with Helm, RBAC and environment parity (dev/stage/prod); deploy time −87% (45m → 6m), 99.3% rollout success.</li>
+                                <li>Implemented GitOps with Argo CD and trunk-based flow; lead time for change −72%, change fail rate −4× through protected pipelines.</li>
+                                <li>Hardened CI/CD (GitLab CI, Trivy, SonarQube): 95% critical vulns blocked pre-prod, −35% code smells, −28% image size.</li>
+                                <li>Operationalized observability (Prometheus, Grafana, alerting): 99.5% uptime SLO, MTTR 24m (−60%).</li>
                             </ul>
+                            <div class="impact-badges">
+                                <span class="impact-badge"><i class="fas fa-bolt"></i> −87% deploy time</span>
+                                <span class="impact-badge"><i class="fas fa-shield-alt"></i> 95% vulns blocked</span>
+                                <span class="impact-badge"><i class="fas fa-signal"></i> 99.5% uptime</span>
+                            </div>
                             <div class="tech-badges">
                                 <span class="tech-badge">OpenShift</span>
                                 <span class="tech-badge">Helm</span>
@@ -517,12 +431,18 @@
                     <div class="content d-flex align-items-center">
                         <img src="images/SECOOPEC.jpeg" alt="SOCOOPEC" style="width:110px;height:110px;object-fit:cover;border-radius:16px;margin-right:1.25rem;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
                         <div>
-                            <h5 style="color:#00ff88;font-weight:800;margin:0;">DevOps Intern — SOCOOPEC</h5>
+                            <h5 style="color:var(--accent);font-weight:800;margin:0;">DevOps Intern — SOCOOPEC</h5>
                             <div class="xp-meta">Tunisia • Jun 2024 – Jul 2024</div>
                             <ul style="margin-bottom:.5rem;">
-                                <li>Built stock management app (Angular + Spring Boot, JWT auth).</li>
-                                <li>Automated delivery with GitHub Actions to AWS EC2; −80% manual effort.</li>
+                                <li>Built a stock management app (Angular + Spring Boot, JWT, RBAC) covering core inventory and order workflows.</li>
+                                <li>Containerized and automated delivery with GitHub Actions → AWS EC2 behind Nginx; blue/green releases, deploy < 5 min, −80% manual ops.</li>
+                                <li>Improved runtime with Nginx caching/compression and logs/metrics; faster TTFB and simpler troubleshooting.</li>
                             </ul>
+                            <div class="impact-badges">
+                                <span class="impact-badge"><i class="fas fa-stopwatch"></i> < 5 min deploy</span>
+                                <span class="impact-badge"><i class="fas fa-hands-helping"></i> −80% manual work</span>
+                                <span class="impact-badge"><i class="fas fa-rocket"></i> Faster TTFB</span>
+                            </div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Angular</span>
                                 <span class="tech-badge">Spring Boot</span>
