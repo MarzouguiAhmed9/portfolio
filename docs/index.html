@@ -285,11 +285,13 @@
                     <img src="images/terraform.png" class="project-img" alt="Terraform VPC Automation">
                     <div class="project-title">Terraform VPC Automation</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Reusable Terraform modules for AWS VPC provisioning</li>
-                            <li>Reduced deployment time by 70%</li>
-                            <li>Consistent, scalable cloud infrastructure</li>
+                        <p class="mb-2">Infrastructure-as-Code modules to standardize secure AWS network foundations.</p>
+                        <ul class="mb-2">
+                            <li>Designed reusable Terraform modules (VPC, subnets, routing, security, NAT, IGW).</li>
+                            <li>Enforced tagging, CIDR governance and consistent multi-env layouts (dev/stage/prod).</li>
+                            <li>Cut manual provisioning time by 70% and reduced config drift to near zero.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Terraform • AWS VPC • IAM • Remote State (S3 + DynamoDB) • Modules</div>
                         <a href="https://github.com/MarzouguiAhmed9/vpc-terraform-project" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
@@ -297,93 +299,110 @@
                     <img src="images/kvm.jpg" class="project-img" alt="Automated KVM Virtual Lab">
                     <div class="project-title">Automated KVM Virtual Lab</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Provisioned VMs with Ansible, libvirt, and Cloud-init</li>
-                            <li>Setup time reduced from hours to minutes</li>
-                            <li>Ideal for DevOps and testing environments</li>
+                        <p class="mb-2">Local cloud lab enabling rapid reproducible environments for DevOps experiments.</p>
+                        <ul class="mb-2">
+                            <li>Automated VM lifecycle with Ansible, libvirt & cloud-init (networks, users, SSH, packages).</li>
+                            <li>Reduced environment setup from several hours to under 10 minutes.</li>
+                            <li>Supports iterative testing of CI/CD, container runtimes and clustering scenarios.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Ansible • KVM/libvirt • Cloud-init • Linux Networking • Automation</div>
                         <a href="https://dev.to/ahmed_marzougui_4f08a0e78/building-a-virtual-cloud-lab-with-ansible-kvm-and-libvirt-48k8" target="_blank" class="btn btn-outline-info btn-sm mt-2">Dev.to Article</a>
                         <a href="https://github.com/MarzouguiAhmed9/automated-kvm-virtual-lab" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/aws2.jpeg" class="project-img" alt="AWS 3-Tier Architecture">
-                    <div class="project-title">AWS 3-Tier Architecture</div>
+                    <div class="project-title">AWS 3‑Tier Architecture</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Highly available, scalable AWS architecture</li>
-                            <li>Secure network segmentation, autoscaling EC2, multi-AZ Aurora MySQL</li>
+                        <p class="mb-2">Production-ready, fault-tolerant baseline for web / API workloads.</p>
+                        <ul class="mb-2">
+                            <li>Isolated tiers (public, private, db) with security groups and NACL hardening.</li>
+                            <li>Auto Scaling + ALB for resilient stateless application layer.</li>
+                            <li>Multi-AZ Aurora MySQL ensuring high availability and durability.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: AWS VPC • EC2 • ALB • ASG • Aurora MySQL • IAM • CloudWatch</div>
                         <a href="https://github.com/MarzouguiAhmed9/3-Tier-Architecture-On-AWS" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
-                    <div class="project-title">Helm Chart Deployment to EKS with GitLab CI/CD</div>
+                    <div class="project-title">GitLab CI/CD Helm Deployments to EKS</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Automated Helm chart deployments to Amazon EKS</li>
-                            <li>GitLab CI/CD for Kubernetes and DevOps automation</li>
+                        <p class="mb-2">Automated, policy-driven Kubernetes delivery pipeline.</p>
+                        <ul class="mb-2">
+                            <li>Packaged microservice with custom Helm chart (values segregation per environment).</li>
+                            <li>GitLab pipeline stages: build, scan, chart lint, deploy (review → staging → prod gates).</li>
+                            <li>Reduced manual release overhead and improved rollback confidence.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • Docker • Registry • RBAC</div>
                         <a href="https://lnkd.in/ewpXXBGW" target="_blank" class="btn btn-outline-info btn-sm mt-2">Medium Guide</a>
                         <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/aws3.png" class="project-img" alt="Collaborative File Sharing Platform">
-                    <div class="project-title">Collaborative File Sharing Platform</div>
+                    <div class="project-title">Serverless Secure File Sharing Platform</div>
                     <div class="p-3">
-                        <ul>
-                            <li>React frontend with AWS Cognito authentication</li>
-                            <li>Serverless backend: Lambda, API Gateway, EFS, KMS</li>
-                            <li>WAF protection, CloudWatch logging</li>
+                        <p class="mb-2">Scalable, low-ops collaboration system with fine-grained access controls.</p>
+                        <ul class="mb-2">
+                            <li>Authentication & user pools via Cognito (token-based secured API Gateway access).</li>
+                            <li>Lambda functions orchestrating file lifecycle with encrypted storage.</li>
+                            <li>Integrated WAF & logging for auditability and attack surface reduction.</li>
                         </ul>
-                        <span>Secure, scalable, and cost-efficient file sharing</span>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: React • Cognito • API Gateway • Lambda • EFS • KMS • WAF • CloudWatch</div>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/openstack1.jpeg" class="project-img" alt="OpenStack Private Cloud">
-                    <div class="project-title">OpenStack Private Cloud & AI Platform</div>
+                    <div class="project-title">Hybrid OpenStack Private Cloud & AI Platform</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Private cloud on 7 machines with OpenStack, Ansible, Docker</li>
-                            <li>WorkMate: AI-powered education platform</li>
-                            <li>Hybrid cloud: OpenStack (Kubernetes + MySQL) & AWS (EC2 + S3)</li>
-                            <li>Grafana monitoring</li>
+                        <p class="mb-2">Educational + compute platform bridging private and public cloud.</p>
+                        <ul class="mb-2">
+                            <li>Provisioned multi-node OpenStack cluster (compute, networking, storage orchestration).</li>
+                            <li>Deployed AI-focused workloads (Kubernetes + MySQL) internally; integrated AWS for burst.</li>
+                            <li>Central observability with Grafana dashboards (capacity + performance insights).</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: OpenStack • Ansible • Kubernetes • Docker • MySQL • AWS EC2/S3 • Grafana</div>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/aws.jpeg" class="project-img" alt="Spring Boot on AWS ECS Fargate">
                     <div class="project-title">Spring Boot on AWS ECS Fargate</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Automated CI/CD with GitHub, CodePipeline, CodeBuild, ECR</li>
-                            <li>Zero-downtime deployments to ECS Fargate</li>
-                            <li>Auto-scaling for high availability</li>
+                        <p class="mb-2">Containerized service with automated continuous delivery and scaling.</p>
+                        <ul class="mb-2">
+                            <li>CI/CD pipeline (GitHub → CodePipeline → CodeBuild → ECR → ECS deployment).</li>
+                            <li>Zero-downtime rolling updates with health checks & auto scaling policies.</li>
+                            <li>Improved release cadence and reduced operational overhead.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Spring Boot • Docker • ECS Fargate • ECR • CodePipeline • CodeBuild</div>
                         <a href="https://github.com/MarzouguiAhmed9/spring-aws" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/cicd.jpeg" class="project-img" alt="CI/CD Pipeline for Node.js on Kubernetes">
-                    <div class="project-title">CI/CD Pipeline for Node.js on Kubernetes</div>
+                    <div class="project-title">Node.js Kubernetes CI/CD Pipeline</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Automated pipeline: Jenkins, Docker, Kubernetes</li>
-                            <li>Static analysis, containerization, monitoring, Slack notifications</li>
+                        <p class="mb-2">End-to-end delivery workflow emphasizing quality gates and observability.</p>
+                        <ul class="mb-2">
+                            <li>Integrated static analysis, container build, image scanning and deploy stages.</li>
+                            <li>Automated notifications (Slack) and runtime monitoring hooks.</li>
+                            <li>Accelerated feedback loops and reduced regression risk.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Docker • Kubernetes • Node.js • Static Analysis • Slack API</div>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/cicd2.jpeg" class="project-img" alt="CI/CD Pipeline Optimization">
                     <div class="project-title">CI/CD Pipeline Optimization</div>
                     <div class="p-3">
-                        <ul>
-                            <li>Automated pipeline: Jenkins, Ansible, Docker, GitHub, AWS EC2</li>
-                            <li>50+ builds, deployment in under 5 minutes</li>
-                            <li>30% fewer human errors, real-time monitoring</li>
+                        <p class="mb-2">Refined delivery platform for faster, more reliable releases.</p>
+                        <ul class="mb-2">
+                            <li>Introduced parallel stages, caching & immutable artifact strategy (50+ builds).</li>
+                            <li>Achieved deploys in under 5 minutes and lowered manual intervention by 30%.</li>
+                            <li>Real-time telemetry improved MTTR on failed builds.</li>
                         </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Ansible • Docker • GitHub • AWS EC2 • Monitoring</div>
                     </div>
                 </div>
             </div>
