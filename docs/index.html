@@ -124,158 +124,81 @@
         .timeline-item.right { left: 52%; text-align: left; }
         .timeline-item .content { display: inline-block; padding: 1.5rem; background: rgba(255,255,255,0.10); border-radius: 10px; backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
         .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .project-card {
-            position: relative;
-            background: linear-gradient(145deg, rgba(255,255,255,0.65), rgba(250,250,255,0.35));
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(120,130,255,0.25);
-            border-radius: 18px;
-            padding: 1.1rem 1.15rem 1.25rem;
-            box-shadow: 0 4px 14px -4px rgba(40,18,120,0.15);
-            transition: box-shadow .35s ease, transform .35s ease, border-color .35s ease;
+        .project-card { background: rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.12); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s; }
+        .project-card:hover { transform: scale(1.04); box-shadow:0 10px 30px rgba(124,58,237,0.18); }
+        .project-img { width: 100%; height: 180px; object-fit: cover; }
+        .project-title { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: 1rem; }
+        .education-list, .languages-list { list-style: none; padding: 0; }
+        .education-list li, .languages-list li { background: rgba(255,255,255,0.10); margin-bottom: 1rem; padding: 1rem; border-radius: 10px; }
+        .contact-form { max-width: 500px; margin: auto; }
+        .footer { background: #16213e; text-align: center; padding: 2rem 0 1rem 0; color: #fff; }
+        .footer a { color: var(--accent); margin: 0 10px; font-size: 1.5rem; }
+        @media (max-width: 900px) {
+            .timeline-item { width: 100%; left: 0!important; text-align: left!important; }
         }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 26px -6px rgba(40,18,120,0.28);
-            border-color: rgba(120,130,255,0.55);
+        @keyframes fadein { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadein { opacity: 0; animation: fadein 1.2s forwards; }
+        .animate-fadein[style*='animation-delay:0.3s'] { animation-delay: 0.3s; }
+        .animate-fadein[style*='animation-delay:0.6s'] { animation-delay: 0.6s; }
+        /* Experience enhancements */
+        .xp-meta { color: var(--muted); font-size: 0.95rem; margin: .25rem 0 .75rem; }
+        .tech-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+        .tech-badge { padding:.25rem .6rem; border-radius:999px; font-size:.8rem; color:var(--accent); background:rgba(34,211,238,0.12); border:1px solid rgba(34,211,238,0.35); }
+        /* Impact badges */
+        .impact-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin:.25rem 0 .5rem; }
+        .impact-badge { padding:.25rem .6rem; border-radius:8px; font-size:.8rem; background: rgba(124,58,237,0.18); border:1px solid rgba(124,58,237,0.35); color:#E0E7FF; }
+        /* Section reveal */
+        .section { opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+        .section.in-view { opacity:1; transform:none; }
+        /* Back to top */
+        #backToTop { position:fixed; right:20px; bottom:24px; z-index:999; display:none; border:none; border-radius:50%; width:44px; height:44px; background:var(--accent); color:#0B1021; box-shadow:0 10px 24px rgba(34,211,238,0.25); }
+        #backToTop:hover { background:#2bdcf0; }
+        /* Certifications */
+        .cert-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+        .cert-card{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.12);padding:1rem 1.1rem;border-radius:14px;transition:.25s;position:relative;}
+        .cert-icon{
+            width:54px;height:54px;display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,var(--accent-2),var(--accent));
+            border-radius:14px;font-size:30px;color:#fff;
+            box-shadow:0 4px 14px rgba(0,0,0,.35);
         }
-        .project-card h5,
-        .project-card h4 {
-            font-weight: 600;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            margin-bottom: .55rem;
+        .cert-title{font-weight:700;font-size:.95rem;color:var(--accent);}
+        .cert-issuer{font-size:.7rem;letter-spacing:.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:.25rem;}
+        .cert-meta{font-size:.7rem;color:#cdd7e5;background:rgba(124,58,237,0.18);padding:.25rem .55rem;border-radius:6px;display:inline-block;margin-bottom:.4rem;border:1px solid rgba(124,58,237,0.35);}
+        .cert-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.25rem;}
+        .cert-tag{font-size:.65rem;padding:.25rem .55rem;border-radius:999px;background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.35);color:var(--accent);font-weight:500;letter-spacing:.5px;}
+        .cert-actions a{font-size:.65rem;}
+        /* Visitor badge */
+        .visit-badge{
+            display:inline-flex;align-items:center;gap:.4rem;
+            font-size:.75rem;font-weight:600;
+            padding:.35rem .75rem;
+            border:1px solid rgba(34,211,238,0.35);
+            background:rgba(34,211,238,0.12);
+            border-radius:999px;
+            color:var(--accent);
         }
-        .project-card .project-lead {
-            font-size: .78rem;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: var(--accent,#5d39ff);
-            margin-bottom: .35rem;
+        /* Workshops & Competitions */
+        .workshop-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+        .workshop-card{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.12);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.22);transition:.25s;}
+        .workshop-card:hover{transform:translateY(-6px);box-shadow:0 10px 32px rgba(124,58,237,0.28);}
+        /* Removed image usage; new icon header */
+        .workshop-icon{
+            display:flex;align-items:center;justify-content:center;
+            height:160px;
+            background:linear-gradient(135deg,var(--accent-2),var(--accent));
+            position:relative;
         }
-        .tech-badges,
-        .metric-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .4rem .5rem;
-            margin-top: .65rem;
+        .workshop-icon i{
+            font-size:4rem;
+            color:#fff;
+            text-shadow:0 6px 18px rgba(0,0,0,0.35);
         }
-        .tech-badge {
-            font-size: .63rem;
-            padding: .28rem .55rem;
-            border-radius: 24px;
-            background: linear-gradient(120deg,var(--badge1,#eef4ff),var(--badge2,#f3f9ff));
-            border: 1px solid rgba(100,110,210,0.35);
-            font-weight: 500;
-            color: #24345a;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        .metric-chip {
-            font-size: .6rem;
-            padding: .30rem .55rem;
-            border-radius: 6px;
-            font-weight: 600;
-            background: #101826;
-            color: #e9f5ff;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 2px 4px -1px rgba(0,0,0,0.35);
-            display: inline-flex;
-            align-items: center;
-            gap: .3rem;
-        }
-        .metric-chip i {
-            font-size: .65rem;
-            color: var(--cyan,#19c9d4);
-        }
-        .project-meta-line {
-            font-size: .63rem;
-            font-weight: 500;
-            letter-spacing: .6px;
-            text-transform: uppercase;
-            color: #5b6684;
-            margin-top: .4rem;
-        }
-        .project-actions {
-            display: flex;
-            gap: .55rem;
-            flex-wrap: wrap;
-            margin-top: .85rem;
-        }
-        .project-actions .btn {
-            --btn-bg: #101826;
-            --btn-bd: rgba(140,150,255,.35);
-            font-size: .66rem;
-            padding: .45rem .85rem;
-            border-radius: 10px;
-            border: 1px solid var(--btn-bd);
-            background: var(--btn-bg);
-            color: #f3f7ff;
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            transition: background .3s, transform .3s, border-color .3s;
-        }
-        .project-actions .btn:hover {
-            background: linear-gradient(140deg,#18243a,#1e2f58);
-            border-color: rgba(140,150,255,.75);
-            transform: translateY(-2px);
-        }
-        .project-divider {
-            height: 1px;
-            background: linear-gradient(90deg,rgba(90,110,180,0.15),rgba(90,110,180,0.02));
-            margin: .9rem 0 .6rem;
-            border: 0;
-        }
-        .project-card small.section-label {
-            font-size: .58rem;
-            font-weight: 600;
-            letter-spacing: .7px;
-            color: #596c90;
-            text-transform: uppercase;
-            margin-bottom: .25rem;
-            display: block;
-        }
-        /* --- Projects Section Enhancements --- */
-        .projects-section-title {
-          position: relative;
-          display: inline-block;
-          padding-bottom: .4rem;
-        }
-        .projects-section-title:after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          height: 4px;
-          width: 70%;
-          background: linear-gradient(90deg,var(--accent,#5d39ff),var(--cyan,#19c9d4));
-          border-radius: 2px;
-        }
-        .projects-grid {
-          display: grid;
-          gap: 1.5rem;
-        }
-        @media (min-width: 680px) {
-          .projects-grid {
-            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-          }
-        }
-        /* Fade-in animation for first load (progressive feel) */
-        .projects-grid .project-card {
-          opacity: 0;
-          animation: projFade .6s ease forwards;
-        }
-        .projects-grid .project-card:nth-child(2){animation-delay:.08s;}
-        .projects-grid .project-card:nth-child(3){animation-delay:.14s;}
-        .projects-grid .project-card:nth-child(4){animation-delay:.20s;}
-        @keyframes projFade {
-          from {transform: translateY(14px); opacity: 0;}
-          to {transform: translateY(0); opacity: 1;}
-        }
+        .workshop-body{padding:1.1rem 1.25rem 1.4rem;}
+        .workshop-title{font-size:1.15rem;font-weight:700;color:var(--accent);margin-bottom:.35rem;}
+        .workshop-meta{font-size:.7rem;letter-spacing:.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;}
+        .workshop-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem;}
+        .workshop-tag{font-size:.65rem;padding:.3rem .6rem;border-radius:999px;background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.35);color:var(--accent);font-weight:500;}
     </style>
 </head>
 <body>
@@ -404,155 +327,137 @@
         </div>
     </section>
     <div class="divider"></div>
-    <section id="projects" class="mt-5">
-      <h2 class="projects-section-title">Projects</h2>
-      <!-- Wrap existing project cards in new grid container -->
-      <div class="projects-grid">
-        <div class="project-card">
-          <!-- ...existing icon / image if any (leave or adapt)... -->
-          <div class="project-lead">Infrastructure Automation</div>
-          <h5><i class="fas fa-cloud"></i> Terraform VPC Automation</h5>
-          <p class="mb-2">
-            Goal: Provision a scalable, segmented AWS network baseline rapidly (VPC, public/private subnets, SGs, ALB, EC2).
-          </p>
-          <small class="section-label">Implementation</small>
-          <p class="mb-2">
-            Modular Terraform (remote state + variables) + least-privilege SG design + reusable network module to enforce tagging & CIDR consistency.
-          </p>
-          <hr class="project-divider" />
-          <small class="section-label">Result</small>
-          <p class="mb-2">
-            End-to-end environment deployed in under 90s (terraform apply) enabling repeatable infra spin‑up for dev/test while cutting manual config drift.
-          </p>
-          <div class="metric-chips">
-            <span class="metric-chip"><i class="fas fa-bolt"></i> <strong>-70%</strong> manual setup time</span>
-            <span class="metric-chip"><i class="fas fa-sync"></i> 100% Idempotent</span>
-            <span class="metric-chip"><i class="fas fa-shield-alt"></i> Segmented SG Layers</span>
-          </div>
-          <div class="tech-badges">
-            <span class="tech-badge">Terraform</span>
-            <span class="tech-badge">AWS VPC</span>
-            <span class="tech-badge">ALB</span>
-            <span class="tech-badge">EC2</span>
-            <span class="tech-badge">IaC</span>
-          </div>
-          <div class="project-actions">
-            <!-- ...existing buttons (e.g., Demo / GitHub) ensure they have btn class inside .project-actions ... -->
-            <!-- <a class="btn" href="..."><i class="fab fa-github"></i> Code</a> -->
-          </div>
-        </div>
-        <div class="project-card">
-            <img src="images/kvm.jpg" class="project-img" alt="Automated KVM Virtual Lab">
-            <div class="project-title">Automated KVM Virtual Lab</div>
-            <div class="p-3">
-                <p class="mb-2">Local cloud lab enabling rapid reproducible environments for DevOps experiments.</p>
-                <ul class="mb-2">
-                    <li>Automated VM lifecycle with Ansible, libvirt & cloud-init (networks, users, SSH, packages).</li>
-                    <li>Reduced environment setup from several hours to under 10 minutes.</li>
-                    <li>Supports iterative testing of CI/CD, container runtimes and clustering scenarios.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: Ansible • KVM/libvirt • Cloud-init • Linux Networking • Automation</div>
-                <a href="https://dev.to/ahmed_marzougui_4f08a0e78/building-a-virtual-cloud-lab-with-ansible-kvm-and-libvirt-48k8" target="_blank" class="btn btn-outline-info btn-sm mt-2">Dev.to Article</a>
-                <a href="https://github.com/MarzouguiAhmed9/automated-kvm-virtual-lab" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+    <section id="projects" class="section">
+        <div class="container glass p-4">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-gallery">
+                <div class="project-card">
+                    <img src="images/terraform.png" class="project-img" alt="Terraform VPC Automation">
+                    <div class="project-title">Terraform VPC Automation</div>
+                    <div class="p-3">
+                        <p class="mb-2">Infrastructure-as-Code modules to standardize secure AWS network foundations.</p>
+                        <ul class="mb-2">
+                            <li>Designed reusable Terraform modules (VPC, subnets, routing, security, NAT, IGW).</li>
+                            <li>Enforced tagging, CIDR governance and consistent multi-env layouts (dev/stage/prod).</li>
+                            <li>Cut manual provisioning time by 70% and reduced config drift to near zero.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Terraform • AWS VPC • IAM • Remote State (S3 + DynamoDB) • Modules</div>
+                        <a href="https://github.com/MarzouguiAhmed9/vpc-terraform-project" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/kvm.jpg" class="project-img" alt="Automated KVM Virtual Lab">
+                    <div class="project-title">Automated KVM Virtual Lab</div>
+                    <div class="p-3">
+                        <p class="mb-2">Local cloud lab enabling rapid reproducible environments for DevOps experiments.</p>
+                        <ul class="mb-2">
+                            <li>Automated VM lifecycle with Ansible, libvirt & cloud-init (networks, users, SSH, packages).</li>
+                            <li>Reduced environment setup from several hours to under 10 minutes.</li>
+                            <li>Supports iterative testing of CI/CD, container runtimes and clustering scenarios.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Ansible • KVM/libvirt • Cloud-init • Linux Networking • Automation</div>
+                        <a href="https://dev.to/ahmed_marzougui_4f08a0e78/building-a-virtual-cloud-lab-with-ansible-kvm-and-libvirt-48k8" target="_blank" class="btn btn-outline-info btn-sm mt-2">Dev.to Article</a>
+                        <a href="https://github.com/MarzouguiAhmed9/automated-kvm-virtual-lab" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/aws2.jpeg" class="project-img" alt="AWS 3-Tier Architecture">
+                    <div class="project-title">AWS 3‑Tier Architecture</div>
+                    <div class="p-3">
+                        <p class="mb-2">Production-ready, fault-tolerant baseline for web / API workloads.</p>
+                        <ul class="mb-2">
+                            <li>Isolated tiers (public, private, db) with security groups and NACL hardening.</li>
+                            <li>Auto Scaling + ALB for resilient stateless application layer.</li>
+                            <li>Multi-AZ Aurora MySQL ensuring high availability and durability.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: AWS VPC • EC2 • ALB • ASG • Aurora MySQL • IAM • CloudWatch</div>
+                        <a href="https://github.com/MarzouguiAhmed9/3-Tier-Architecture-On-AWS" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
+                    <div class="project-title">GitLab CI/CD Helm Deployments to EKS</div>
+                    <div class="p-3">
+                        <p class="mb-2">Automated, policy-driven Kubernetes delivery pipeline.</p>
+                        <ul class="mb-2">
+                            <li>Packaged microservice with custom Helm chart (values segregation per environment).</li>
+                            <li>GitLab pipeline stages: build, scan, chart lint, deploy (review → staging → prod gates).</li>
+                            <li>Reduced manual release overhead and improved rollback confidence.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • Docker • Registry • RBAC</div>
+                        <a href="https://lnkd.in/ewpXXBGW" target="_blank" class="btn btn-outline-info btn-sm mt-2">Medium Guide</a>
+                        <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/aws3.png" class="project-img" alt="Collaborative File Sharing Platform">
+                    <div class="project-title">Serverless Secure File Sharing Platform</div>
+                    <div class="p-3">
+                        <p class="mb-2">Scalable, low-ops collaboration system with fine-grained access controls.</p>
+                        <ul class="mb-2">
+                            <li>Authentication & user pools via Cognito (token-based secured API Gateway access).</li>
+                            <li>Lambda functions orchestrating file lifecycle with encrypted storage.</li>
+                            <li>Integrated WAF & logging for auditability and attack surface reduction.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: React • Cognito • API Gateway • Lambda • EFS • KMS • WAF • CloudWatch</div>
+                        <a href="https://github.com/MarzouguiAhmed9/Collaborative-File-Sharing-Platform" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/openstack1.jpeg" class="project-img" alt="OpenStack Private Cloud">
+                    <div class="project-title">Hybrid OpenStack Private Cloud & AI Platform</div>
+                    <div class="p-3">
+                        <p class="mb-2">Educational + compute platform bridging private and public cloud.</p>
+                        <ul class="mb-2">
+                            <li>Provisioned multi-node OpenStack cluster (compute, networking, storage orchestration).</li>
+                            <li>Deployed AI-focused workloads (Kubernetes + MySQL) internally; integrated AWS for burst.</li>
+                            <li>Central observability with Grafana dashboards (capacity + performance insights).</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: OpenStack • Ansible • Kubernetes • Docker • MySQL • AWS EC2/S3 • Grafana</div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/aws.jpeg" class="project-img" alt="Spring Boot on AWS ECS Fargate">
+                    <div class="project-title">Spring Boot on AWS ECS Fargate</div>
+                    <div class="p-3">
+                        <p class="mb-2">Containerized service with automated continuous delivery and scaling.</p>
+                        <ul class="mb-2">
+                            <li>CI/CD pipeline (GitHub → CodePipeline → CodeBuild → ECR → ECS deployment).</li>
+                            <li>Zero-downtime rolling updates with health checks & auto scaling policies.</li>
+                            <li>Improved release cadence and reduced operational overhead.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Spring Boot • Docker • ECS Fargate • ECR • CodePipeline • CodeBuild</div>
+                        <a href="https://github.com/MarzouguiAhmed9/spring-aws" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/cicd.jpeg" class="project-img" alt="CI/CD Pipeline for Node.js on Kubernetes">
+                    <div class="project-title">Node.js Kubernetes CI/CD Pipeline</div>
+                    <div class="p-3">
+                        <p class="mb-2">End-to-end delivery workflow emphasizing quality gates and observability.</p>
+                        <ul class="mb-2">
+                            <li>Integrated static analysis, container build, image scanning and deploy stages.</li>
+                            <li>Automated notifications (Slack) and runtime monitoring hooks.</li>
+                            <li>Accelerated feedback loops and reduced regression risk.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Docker • Kubernetes • Node.js • Static Analysis • Slack API</div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/cicd2.jpeg" class="project-img" alt="CI/CD Pipeline Optimization">
+                    <div class="project-title">CI/CD Pipeline Optimization</div>
+                    <div class="p-3">
+                        <p class="mb-2">Refined delivery platform for faster, more reliable releases.</p>
+                        <ul class="mb-2">
+                            <li>Introduced parallel stages, caching & immutable artifact strategy (50+ builds).</li>
+                            <li>Achieved deploys in under 5 minutes and lowered manual intervention by 30%.</li>
+                            <li>Real-time telemetry improved MTTR on failed builds.</li>
+                        </ul>
+                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Ansible • Docker • GitHub • AWS EC2 • Monitoring</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="project-card">
-            <img src="images/aws2.jpeg" class="project-img" alt="AWS 3-Tier Architecture">
-            <div class="project-title">AWS 3‑Tier Architecture</div>
-            <div class="p-3">
-                <p class="mb-2">Production-ready, fault-tolerant baseline for web / API workloads.</p>
-                <ul class="mb-2">
-                    <li>Isolated tiers (public, private, db) with security groups and NACL hardening.</li>
-                    <li>Auto Scaling + ALB for resilient stateless application layer.</li>
-                    <li>Multi-AZ Aurora MySQL ensuring high availability and durability.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: AWS VPC • EC2 • ALB • ASG • Aurora MySQL • IAM • CloudWatch</div>
-                <a href="https://github.com/MarzouguiAhmed9/3-Tier-Architecture-On-AWS" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
-            <div class="project-title">GitLab CI/CD Helm Deployments to EKS</div>
-            <div class="p-3">
-                <p class="mb-2">Automated, policy-driven Kubernetes delivery pipeline.</p>
-                <ul class="mb-2">
-                    <li>Packaged microservice with custom Helm chart (values segregation per environment).</li>
-                    <li>GitLab pipeline stages: build, scan, chart lint, deploy (review → staging → prod gates).</li>
-                    <li>Reduced manual release overhead and improved rollback confidence.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • Docker • Registry • RBAC</div>
-                <a href="https://lnkd.in/ewpXXBGW" target="_blank" class="btn btn-outline-info btn-sm mt-2">Medium Guide</a>
-                <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/aws3.png" class="project-img" alt="Collaborative File Sharing Platform">
-            <div class="project-title">Serverless Secure File Sharing Platform</div>
-            <div class="p-3">
-                <p class="mb-2">Scalable, low-ops collaboration system with fine-grained access controls.</p>
-                <ul class="mb-2">
-                    <li>Authentication & user pools via Cognito (token-based secured API Gateway access).</li>
-                    <li>Lambda functions orchestrating file lifecycle with encrypted storage.</li>
-                    <li>Integrated WAF & logging for auditability and attack surface reduction.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: React • Cognito • API Gateway • Lambda • EFS • KMS • WAF • CloudWatch</div>
-                <a href="https://github.com/MarzouguiAhmed9/Collaborative-File-Sharing-Platform" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/openstack1.jpeg" class="project-img" alt="OpenStack Private Cloud">
-            <div class="project-title">Hybrid OpenStack Private Cloud & AI Platform</div>
-            <div class="p-3">
-                <p class="mb-2">Educational + compute platform bridging private and public cloud.</p>
-                <ul class="mb-2">
-                    <li>Provisioned multi-node OpenStack cluster (compute, networking, storage orchestration).</li>
-                    <li>Deployed AI-focused workloads (Kubernetes + MySQL) internally; integrated AWS for burst.</li>
-                    <li>Central observability with Grafana dashboards (capacity + performance insights).</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: OpenStack • Ansible • Kubernetes • Docker • MySQL • AWS EC2/S3 • Grafana</div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/aws.jpeg" class="project-img" alt="Spring Boot on AWS ECS Fargate">
-            <div class="project-title">Spring Boot on AWS ECS Fargate</div>
-            <div class="p-3">
-                <p class="mb-2">Containerized service with automated continuous delivery and scaling.</p>
-                <ul class="mb-2">
-                    <li>CI/CD pipeline (GitHub → CodePipeline → CodeBuild → ECR → ECS deployment).</li>
-                    <li>Zero-downtime rolling updates with health checks & auto scaling policies.</li>
-                    <li>Improved release cadence and reduced operational overhead.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: Spring Boot • Docker • ECS Fargate • ECR • CodePipeline • CodeBuild</div>
-                <a href="https://github.com/MarzouguiAhmed9/spring-aws" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/cicd.jpeg" class="project-img" alt="CI/CD Pipeline for Node.js on Kubernetes">
-            <div class="project-title">Node.js Kubernetes CI/CD Pipeline</div>
-            <div class="p-3">
-                <p class="mb-2">End-to-end delivery workflow emphasizing quality gates and observability.</p>
-                <ul class="mb-2">
-                    <li>Integrated static analysis, container build, image scanning and deploy stages.</li>
-                    <li>Automated notifications (Slack) and runtime monitoring hooks.</li>
-                    <li>Accelerated feedback loops and reduced regression risk.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Docker • Kubernetes • Node.js • Static Analysis • Slack API</div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/cicd2.jpeg" class="project-img" alt="CI/CD Pipeline Optimization">
-            <div class="project-title">CI/CD Pipeline Optimization</div>
-            <div class="p-3">
-                <p class="mb-2">Refined delivery platform for faster, more reliable releases.</p>
-                <ul class="mb-2">
-                    <li>Introduced parallel stages, caching & immutable artifact strategy (50+ builds).</li>
-                    <li>Achieved deploys in under 5 minutes and lowered manual intervention by 30%.</li>
-                    <li>Real-time telemetry improved MTTR on failed builds.</li>
-                </ul>
-                <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Ansible • Docker • GitHub • AWS EC2 • Monitoring</div>
-            </div>
-        </div>
-      </div>
     </section>
     <div class="divider"></div>
     <section id="experience" class="section">
@@ -730,16 +635,16 @@
                     <div class="workshop-body">
                         <div class="workshop-title">11ème Édition du Bal Des Projets d'Esprit</div>
                         <div class="workshop-meta">Competition • Engineering Showcase</div>
-                        <p style="font-size:.9rem;line-height:1.4;">
-                            Honored to have been chosen to showcase our work at this year’s "Bal des Projets"—an amazing opportunity to present our work alongside talented peers.
-                            Project showcased: <strong>E-Flex Integrated Banking Platform</strong>, a modular digital banking solution enabling secure account management, transactional workflows and API-driven integration with external financial services.
+                        <p>
+                            Honored to have been chosen to showcase our work at this year’s "Bal des Projets".
+                            Our project: <strong>E-Flex Integrated Banking Platform</strong> — a modular solution enabling core banking operations, secure transaction workflows, and API-driven extensibility for partner services.
                         </p>
                         <div class="workshop-tags">
-                            <span class="workshop-tag">Symfony</span>
-                            <span class="workshop-tag">Java</span>
-                            <span class="workshop-tag">PHP</span>
-                            <span class="workshop-tag">MySQL</span>
-                            <span class="workshop-tag">API</span>
+                            <span class="badge bg-secondary">Framework Symfony</span>
+                            <span class="badge bg-secondary">Java</span>
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                            <span class="badge bg-secondary">Interface de programmation d’application (API)</span>
                         </div>
                     </div>
                 </div>
