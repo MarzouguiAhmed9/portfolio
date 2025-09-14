@@ -238,7 +238,7 @@
         /* Stats & tags polish */
         #projects .project-stat { background: linear-gradient(135deg, rgba(124,58,237,0.35), rgba(34,211,238,0.35)); border:none; }
         #projects .stack-tag { background:rgba(34,211,238,0.18); border-color:rgba(34,211,238,0.55); transition:.35s; }
-        #projects .stack-tag:hover { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.05); }
+        #projects .stack-tag:hover { background:linear-gradient(135deg,var(--accent),var,--accent-2); color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.05); }
         /* Filter bar visual polish */
         #projects .project-filters { background: rgba(255,255,255,0.05); padding:.85rem 1rem; border-radius:999px; backdrop-filter:blur(10px); box-shadow:0 4px 18px -6px rgba(0,0,0,.45); }
         #projects .filter-btn { position:relative; overflow:hidden; }
@@ -257,6 +257,15 @@
         #projects .proj-points.collapsed li:not(.goal){display:none;}
         #projects .toggle-project{font-size:.65rem;letter-spacing:.5px;padding:.35rem .75rem;margin-bottom:.55rem;border-radius:8px;}
         #projects .toggle-project:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+        /* Added badges & labels for refined project presentation */
+        #projects .kpi-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin:.3rem 0 .6rem;}
+        #projects .kpi-badge{font-size:.55rem;letter-spacing:.5px;padding:.3rem .55rem;border-radius:6px;font-weight:600;background:linear-gradient(135deg,var(--accent),var,--accent-2);color:#0B1021;box-shadow:0 2px 6px rgba(0,0,0,.25);}
+        #projects .kpi-badge.alt{background:rgba(34,211,238,.22);color:var(--accent);}
+        #projects .kpi-badge.sec{background:rgba(124,58,237,.32);color:#fff;}
+        #projects .kpi-badge.rev{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;}
+        #projects .proj-label{display:inline-block;min-width:78px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:.25rem .5rem;border-radius:6px;margin-right:.45rem;background:rgba(34,211,238,.15);color:var(--accent);}
+        #projects .proj-points li.goal .proj-label{background:linear-gradient(135deg,var(--accent),var,--accent-2);color:#0B1021;}
+        #projects .proj-points li.result .proj-label{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;}
     </style>
 </head>
 <body>
@@ -451,10 +460,17 @@
                 <div class="project-title">GitLab Helm CI/CD for EKS Login Microservice</div>
                 <div class="p-3">
                     <p class="mb-2">End‑to‑end automated delivery of a containerized login microservice to Amazon EKS using GitLab CI, Helm charts, and the GitLab Kubernetes Agent.</p>
+                    <div class="kpi-badges">
+                        <span class="kpi-badge">Automated</span>
+                        <span class="kpi-badge alt">Versioned Helm</span>
+                        <span class="kpi-badge sec">Secure Agent</span>
+                        <span class="kpi-badge rev">Rollback Ready</span>
+                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><strong>Goal:</strong> Automate deployment of a microservice‑based login application on EKS to save time, reduce manual errors, and provide a reusable, scalable CI/CD workflow.</li>
-                        <li class="implementation"><strong>Implementation:</strong> EKS cluster + GitLab Kubernetes Agent (secure manifest delivery); Docker image build & push to GitLab Container Registry; versioned Helm charts published to GitLab Helm repo; pipeline stages: dynamic metadata extraction (version/env), image build & scan, chart package, Helm install/upgrade, optional manual cleanup stage enabling rollback/testing.</li>
-                        <li class="result"><strong>Result:</strong> Fully automated, version‑controlled pipeline; reduced deployment errors & manual steps; scalable, secure workflow enabling faster delivery and rapid, safe rollbacks.</li>
+                        <li class="goal"><span class="proj-label">Goal</span> Automate deployment of a microservice‑based login application on EKS to save time, reduce manual errors, and provide a reusable, scalable CI/CD workflow.</li>
+                        <li class="implementation"><span class="proj-label">Architecture</span> EKS cluster + GitLab Kubernetes Agent (secure manifest delivery); Docker image build & push to GitLab Container Registry; versioned Helm charts published to GitLab Helm repository.</li>
+                        <li class="implementation"><span class="proj-label">Pipeline</span> Stages: dynamic metadata extraction (version/env), image build & scan, chart package, Helm install/upgrade, optional manual cleanup stage enabling rollback/testing.</li>
+                        <li class="result"><span class="proj-label">Result</span> Fully automated, version‑controlled pipeline; reduced deployment errors & manual steps; scalable, secure workflow enabling faster delivery and rapid, safe rollbacks.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • GitLab K8s Agent • Docker • Registry</div>
@@ -852,7 +868,7 @@
             .then(d=>{ if(d && typeof d.value === 'number') el.textContent = d.value.toLocaleString(); })
             .catch(()=>{
                 fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-                    .then(r=>r.json())
+                    .then r=>r.json())
                     .then(d=>{ if(d && typeof d.value === 'number') el.textContent = d.value.toLocaleString(); else el.textContent='N/A'; })
                     .catch(()=> el.textContent='N/A');
             });
