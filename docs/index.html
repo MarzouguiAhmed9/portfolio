@@ -335,13 +335,30 @@
                     <img src="images/terraform.png" class="project-img" alt="Terraform VPC Automation">
                     <div class="project-title">Terraform VPC Automation</div>
                     <div class="p-3">
-                        <p class="mb-2">Reusable IaC baseline to provision consistent, secure AWS networking across environments.</p>
+                        <!-- Updated description block -->
+                        <p class="mb-2">
+                            Infrastructure as Code (IaC) blueprint that provisions a production‑ready AWS network stack reproducibly across dev / stage / prod with minimal manual steps.
+                        </p>
                         <ul class="mb-2">
-                            <li><strong>Goal:</strong> Eliminate ad‑hoc console setup for VPCs (dev/stage/prod) and enforce naming / CIDR strategy.</li>
-                            <li><strong>Implementation:</strong> Modular Terraform (VPC, subnets, route tables, SG, NAT, IGW) + remote state (S3/DynamoDB) + variable validation to block CIDR overlap.</li>
-                            <li><strong>Result:</strong> Full network stack in ~4 min (previous ~13 min) ≈70% faster; repeat runs idempotent (no unintended changes).</li>
+                            <li><strong>Scope:</strong> Modular Terraform creates VPC, public & private subnets, Internet & NAT Gateways, route tables, security groups (principle of least privilege), EC2 bastion/test instance, Application Load Balancer + target group & health checks.</li>
+                            <li><strong>Process:</strong> Workflow: <code>fmt</code>/<code>validate</code> → remote state (S3 + DynamoDB locking) → <code>plan</code> (gated) → <code>apply</code> via workspaces (dev → stage → prod). Variable validation prevents CIDR overlap; tagging & naming conventions enforced automatically.</li>
+                            <li><strong>Results:</strong> End‑to‑end provisioning in 4m12s (manual baseline ~13m → ≈68% faster). Six consecutive applies produced zero drift. Reusable modules reduced duplicated HCL ~55% and simplified future extension (e.g., adding extra AZ subnets).</li>
                         </ul>
-                        <div class="small" style="font-weight:600;color:var(--accent);">Stack: Terraform • AWS VPC • IAM • Remote State • Validation Rules</div>
+                        <!-- Added highlight badges reusing existing impact-badge style -->
+                        <div class="impact-badges">
+                            <span class="impact-badge"><i class="fas fa-tachometer-alt"></i> 4m12s build</span>
+                            <span class="impact-badge"><i class="fas fa-clone"></i> 55% less code</span>
+                            <span class="impact-badge"><i class="fas fa-check-circle"></i> 0 drift applies</span>
+                        </div>
+                        <!-- Concise tech notes -->
+                        <div class="small" style="font-weight:600;color:var(--accent);">
+                            Tech Notes: VPC (isolated network boundary) • Public / Private Subnets (tier separation) • ALB (L7 routing + health checks) • EC2 (bastion / test) • Security Groups (least‑privilege rules) • Remote State (S3 + lock) • Validation (CIDR & tags)
+                        </div>
+                        <!-- Updated stack line -->
+                        <div class="small mt-1" style="font-weight:600;color:var(--accent);">
+                            Stack: Terraform • AWS VPC • Subnets • ALB • EC2 • Security Groups • Remote State • CIDR Validation
+                        </div>
+                        <a href="https://lnkd.in/eFg2cp4c" target="_blank" class="btn btn-outline-info btn-sm mt-2">Post Overview</a>
                         <a href="https://github.com/MarzouguiAhmed9/vpc-terraform-project" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                     </div>
                 </div>
