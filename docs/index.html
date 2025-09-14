@@ -178,6 +178,16 @@
             border-radius:999px;
             color:var(--accent);
         }
+        /* Workshops & Competitions */
+        .workshop-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+        .workshop-card{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.12);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.22);transition:.25s;}
+        .workshop-card:hover{transform:translateY(-6px);box-shadow:0 10px 32px rgba(124,58,237,0.28);}
+        .workshop-img{width:100%;height:190px;object-fit:cover;filter:brightness(.9);}
+        .workshop-body{padding:1.1rem 1.25rem 1.4rem;}
+        .workshop-title{font-size:1.15rem;font-weight:700;color:var(--accent);margin-bottom:.35rem;}
+        .workshop-meta{font-size:.7rem;letter-spacing:.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;}
+        .workshop-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem;}
+        .workshop-tag{font-size:.65rem;padding:.3rem .6rem;border-radius:999px;background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.35);color:var(--accent);font-weight:500;}
     </style>
 </head>
 <body>
@@ -198,6 +208,8 @@
                     <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
                     <!-- Added Certifications nav link -->
                     <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <!-- New Workshops nav link -->
+                    <li class="nav-item"><a class="nav-link" href="#workshops">Workshops &amp; Competitions</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -575,6 +587,52 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <!-- New Workshops & Competitions Section -->
+    <section id="workshops" class="section">
+        <div class="container glass p-4">
+            <h2 class="section-title">Workshops &amp; Competitions</h2>
+            <div class="workshop-grid">
+                <!-- AWS Community Day -->
+                <div class="workshop-card">
+                    <img src="images/workshop1.jpg" alt="AWS Community Day" class="workshop-img">
+                    <div class="workshop-body">
+                        <div class="workshop-title">AWS Community Day</div>
+                        <div class="workshop-meta">Community • Cloud Innovation</div>
+                        <p style="font-size:.9rem;line-height:1.4;">
+                            Participated in deep‑dive sessions on serverless patterns, Well‑Architected practices and container security. Engaged with AWS mentors to refine cost optimization & resilience strategies applicable to real project architectures.
+                        </p>
+                        <div class="workshop-tags">
+                            <span class="workshop-tag">Serverless</span>
+                            <span class="workshop-tag">Best Practices</span>
+                            <span class="workshop-tag">Architecture</span>
+                            <span class="workshop-tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bal Des Projets d'Esprit -->
+                <div class="workshop-card">
+                    <img src="images/workshop2.jpg" alt="11ème édition du Bal Des Projets d'Esprit" class="workshop-img">
+                    <div class="workshop-body">
+                        <div class="workshop-title">11ème Édition du Bal Des Projets d'Esprit</div>
+                        <div class="workshop-meta">Competition • Engineering Showcase</div>
+                        <p style="font-size:.9rem;line-height:1.4;">
+                            Showcased an infrastructure & automation project emphasizing scalability, observability and secure delivery workflows. Received feedback from industry panel on deployment maturity and reliability patterns.
+                        </p>
+                        <div class="workshop-tags">
+                            <span class="workshop-tag">DevOps</span>
+                            <span class="workshop-tag">Automation</span>
+                            <span class="workshop-tag">Scalability</span>
+                            <span class="workshop-tag">Observability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-4" style="font-size:.7rem;color:var(--muted);">
+                (Images may be placeholders: replace workshop1.jpg / workshop2.jpg with actual event photos.)
+            </p>
         </div>
     </section>
     <div class="divider"></div>
