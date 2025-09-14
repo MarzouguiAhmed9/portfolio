@@ -210,6 +210,38 @@
         .workshop-meta { font-size: .7rem; letter-spacing: .5px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: .6rem; }
         .workshop-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .6rem; }
         .workshop-tag { font-size: .65rem; padding: .3rem .6rem; border-radius: 999px; background: rgba(34,211,238,0.12); border: 1px solid rgba(34,211,238,0.35); color: var(--accent); font-weight: 500; }
+        /* === Refinements: overall subtle design + larger project typography === */
+        .section-title {font-size:2.6rem;}
+        .hero-title {font-size:3.35rem;letter-spacing:2px;}
+        .hero-sub {font-size:1.6rem;}
+        /* Section hover subtle lift */
+        .glass{transition:.35s box-shadow, .35s transform;}
+        .glass:hover{box-shadow:0 14px 42px -8px rgba(34,211,238,0.18),0 8px 28px -6px rgba(124,58,237,0.22);}
+        /* Project section typography enlargement */
+        #projects .project-title-row h3{font-size:1.15rem;letter-spacing:.5px;}
+        #projects .project-tagline{font-size:.9rem;line-height:1.5;}
+        #projects .project-outcomes{font-size:.72rem;}
+        #projects .project-outcomes li{margin-bottom:.45rem;}
+        #projects .project-stat{font-size:.65rem;padding:.38rem .6rem;}
+        #projects .stack-tag{font-size:.6rem;padding:.3rem .6rem;}
+        #projects .project-badge{font-size:.65rem;padding:.35rem .7rem;}
+        /* Improve buttons contrast */
+        .filter-btn{font-size:.72rem;letter-spacing:.6px;}
+        .filter-btn.active{box-shadow:0 6px 18px -4px rgba(124,58,237,.45);}
+        /* Experience list readability */
+        .xp-details li{line-height:1.45;font-size:.8rem;margin-bottom:.4rem;}
+        .toggle-xp{font-size:.7rem;}
+        /* Links focus accessibility */
+        a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px;}
+        /* Slightly bigger skill cards text */
+        .skill-card{font-size:.9rem;font-weight:500;}
+        /* Stack tag hover */
+        .stack-tag:hover{background:rgba(34,211,238,0.22);}
+        /* Improve timeline on mobile spacing */
+        @media (max-width:900px){
+            .timeline-item{margin-bottom:2.6rem;}
+            .impact-badges{margin-top:.6rem;}
+        }
     </style>
 </head>
 <body>
