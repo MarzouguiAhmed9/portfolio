@@ -447,17 +447,17 @@
             </div>
             <!-- GitLab CI/CD Helm Deployments to EKS -->
             <div class="project-card">
-                <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
-                <div class="project-title">GitLab CI/CD Helm Deployments to EKS</div>
+                <img src="images/1.jpeg" class="project-img" alt="GitLab Helm CI/CD EKS Login Microservice">
+                <div class="project-title">GitLab Helm CI/CD for EKS Login Microservice</div>
                 <div class="p-3">
-                    <p class="mb-2">Policy‑gated delivery pipeline for a containerized microservice on Kubernetes.</p>
+                    <p class="mb-2">End‑to‑end automated delivery of a containerized login microservice to Amazon EKS using GitLab CI, Helm charts, and the GitLab Kubernetes Agent.</p>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><strong>Goal:</strong> Standardize multi‑env releases with rollback safety and chart version control.</li>
-                        <li class="implementation"><strong>Implementation:</strong> GitLab stages (build → scan → lint → deploy), environment‑scoped values.yaml, RBAC‑bound deploy token, chart provenance checks.</li>
-                        <li class="result"><strong>Result:</strong> Reduced manual release steps; rollbacks via previous chart revision (< 1 min) improved recovery confidence.</li>
+                        <li class="goal"><strong>Goal:</strong> Automate deployment of a microservice‑based login application on EKS to save time, reduce manual errors, and provide a reusable, scalable CI/CD workflow.</li>
+                        <li class="implementation"><strong>Implementation:</strong> EKS cluster + GitLab Kubernetes Agent (secure manifest delivery); Docker image build & push to GitLab Container Registry; versioned Helm charts published to GitLab Helm repo; pipeline stages: dynamic metadata extraction (version/env), image build & scan, chart package, Helm install/upgrade, optional manual cleanup stage enabling rollback/testing.</li>
+                        <li class="result"><strong>Result:</strong> Fully automated, version‑controlled pipeline; reduced deployment errors & manual steps; scalable, secure workflow enabling faster delivery and rapid, safe rollbacks.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
-                    <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • Docker • Registry • RBAC</div>
+                    <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • GitLab K8s Agent • Docker • Registry</div>
                     <a href="https://lnkd.in/ewpXXBGW" target="_blank" class="btn btn-outline-info btn-sm mt-2">Medium Guide</a>
                     <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
                 </div>
