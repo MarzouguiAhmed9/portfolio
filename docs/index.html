@@ -246,6 +246,16 @@
         /* Responsive nuance */
         @media (min-width:1400px){ #projects .project-card { min-height:480px; } }
         @media (max-width:600px){ #projects .project-gallery { gap:1.8rem; } }
+        /* Highlight & collapse for project bullet lists */
+        #projects .proj-points{list-style:none;padding-left:0;margin:0 0 .6rem;}
+        #projects .proj-points li{position:relative;padding:.45rem .7rem .45rem 1.1rem;font-size:.72rem;line-height:1.5;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:.4rem;transition:.35s;}
+        #projects .proj-points li:before{content:"";position:absolute;left:.45rem;top:.7rem;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 0 3px rgba(255,255,255,0.05);}
+        #projects .proj-points li.result{background:linear-gradient(135deg,rgba(34,211,238,0.20),rgba(124,58,237,0.18));border:1px solid rgba(34,211,238,0.45);box-shadow:0 0 0 1px rgba(124,58,237,0.25) inset;}
+        #projects .proj-points li.result:before{box-shadow:0 0 0 3px rgba(124,58,237,0.25);}
+        #projects .proj-points li:hover{background:rgba(34,211,238,0.14);}
+        #projects .proj-points.collapsed li:not(.goal){display:none;}
+        #projects .toggle-project{font-size:.65rem;letter-spacing:.5px;padding:.35rem .75rem;margin-bottom:.55rem;border-radius:8px;}
+        #projects .toggle-project:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
     </style>
 </head>
 <body>
@@ -378,128 +388,146 @@
     <div class="container glass p-4">
         <h2 class="section-title">Projects</h2>
         <div class="project-gallery">
+            <!-- Terraform VPC Automation -->
             <div class="project-card">
                 <img src="images/terraform.png" class="project-img" alt="Terraform VPC Automation">
                 <div class="project-title">Terraform VPC Automation</div>
                 <div class="p-3">
                     <p class="mb-2">Reusable IaC baseline to provision consistent, secure AWS networking across environments.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Eliminate ad‑hoc console setup for VPCs (dev/stage/prod) and enforce naming / CIDR strategy.</li>
-                        <li><strong>Implementation:</strong> Modular Terraform (VPC, subnets, route tables, SG, NAT, IGW) + remote state (S3/DynamoDB) + variable validation to block CIDR overlap.</li>
-                        <li><strong>Result:</strong> Full network stack in ~4 min (previous ~13 min) ≈70% faster; repeat runs idempotent (no unintended changes).</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Eliminate ad‑hoc console setup for VPCs (dev/stage/prod) and enforce naming / CIDR strategy.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Modular Terraform (VPC, subnets, route tables, SG, NAT, IGW) + remote state (S3/DynamoDB) + variable validation to block CIDR overlap.</li>
+                        <li class="result"><strong>Result:</strong> Full network stack in ~4 min (previous ~13 min) ≈70% faster; repeat runs idempotent (no unintended changes).</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Terraform • AWS VPC • IAM • Remote State • Validation Rules</div>
                     <a href="https://github.com/MarzouguiAhmed9/vpc-terraform-project" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                 </div>
             </div>
+            <!-- Automated KVM Virtual Lab -->
             <div class="project-card">
                 <img src="images/kvm.jpg" class="project-img" alt="Automated KVM Virtual Lab">
                 <div class="project-title">Automated KVM Virtual Lab</div>
                 <div class="p-3">
                     <p class="mb-2">Local reproducible lab for rapid DevOps experimentation (clusters, CI/CD, networking).</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Reduce manual multi‑VM setup friction for testing pipelines & container stacks.</li>
-                        <li><strong>Implementation:</strong> Ansible playbooks orchestrating libvirt networks, cloud‑init userdata, SSH keys, package bootstrap & tagging.</li>
-                        <li><strong>Result:</strong> Environment build time dropped from “several hours” (manual) to < 10 min; teardown/recreate cycle encourages safer experimentation.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Reduce manual multi‑VM setup friction for testing pipelines & container stacks.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Ansible playbooks orchestrating libvirt networks, cloud‑init userdata, SSH keys, package bootstrap & tagging.</li>
+                        <li class="result"><strong>Result:</strong> Environment build time dropped from “several hours” (manual) to < 10 min; teardown/recreate cycle encourages safer experimentation.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Ansible • KVM/libvirt • Cloud-init • Linux Net • Automation</div>
                     <a href="https://dev.to/ahmed_marzougui_4f08a0e78/building-a-virtual-cloud-lab-with-ansible-kvm-and-libvirt-48k8" target="_blank" class="btn btn-outline-info btn-sm mt-2">Dev.to Article</a>
                     <a href="https://github.com/MarzouguiAhmed9/automated-kvm-virtual-lab" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                 </div>
             </div>
+            <!-- AWS 3‑Tier Architecture -->
             <div class="project-card">
                 <img src="images/aws2.jpeg" class="project-img" alt="AWS 3-Tier Architecture">
                 <div class="project-title">AWS 3‑Tier Architecture</div>
                 <div class="p-3">
                     <p class="mb-2">Reference deployment pattern for a small stateless web/API workload with managed database.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Provide segregated layers (web / app / data) with high availability.</li>
-                        <li><strong>Implementation:</strong> Public & private subnets, SG/NACL hardening, ALB + Auto Scaling, Aurora MySQL (Multi‑AZ) & CloudWatch alarms.</li>
-                        <li><strong>Result:</strong> Achieved zone failure resilience (simulated AZ shutdown) with uninterrupted app response; baseline latency stable under auto scale events.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Provide segregated layers (web / app / data) with high availability.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Public & private subnets, SG/NACL hardening, ALB + Auto Scaling, Aurora MySQL (Multi‑AZ) & CloudWatch alarms.</li>
+                        <li class="result"><strong>Result:</strong> Achieved zone failure resilience (simulated AZ shutdown) with uninterrupted app response; baseline latency stable under auto scale events.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: AWS VPC • EC2 • ALB • ASG • Aurora MySQL • IAM • CloudWatch</div>
                     <a href="https://github.com/MarzouguiAhmed9/3-Tier-Architecture-On-AWS" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                 </div>
             </div>
+            <!-- GitLab CI/CD Helm Deployments to EKS -->
             <div class="project-card">
                 <img src="images/1.jpeg" class="project-img" alt="Helm Chart Deployment to EKS">
                 <div class="project-title">GitLab CI/CD Helm Deployments to EKS</div>
                 <div class="p-3">
                     <p class="mb-2">Policy‑gated delivery pipeline for a containerized microservice on Kubernetes.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Standardize multi‑env releases with rollback safety and chart version control.</li>
-                        <li><strong>Implementation:</strong> GitLab stages (build → scan → lint → deploy), environment‑scoped values.yaml, RBAC‑bound deploy token, chart provenance checks.</li>
-                        <li><strong>Result:</strong> Reduced manual release steps; rollbacks via previous chart revision (< 1 min) improved recovery confidence.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Standardize multi‑env releases with rollback safety and chart version control.</li>
+                        <li class="implementation"><strong>Implementation:</strong> GitLab stages (build → scan → lint → deploy), environment‑scoped values.yaml, RBAC‑bound deploy token, chart provenance checks.</li>
+                        <li class="result"><strong>Result:</strong> Reduced manual release steps; rollbacks via previous chart revision (< 1 min) improved recovery confidence.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: GitLab CI • Helm • Amazon EKS • Docker • Registry • RBAC</div>
                     <a href="https://lnkd.in/ewpXXBGW" target="_blank" class="btn btn-outline-info btn-sm mt-2">Medium Guide</a>
                     <a href="https://lnkd.in/ebTAynSq" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitLab Project</a>
                 </div>
             </div>
+            <!-- Serverless Secure File Sharing Platform -->
             <div class="project-card">
                 <img src="images/aws3.png" class="project-img" alt="Collaborative File Sharing Platform">
                 <div class="project-title">Serverless Secure File Sharing Platform</div>
                 <div class="p-3">
                     <p class="mb-2">Low‑ops collaboration backend enforcing least‑privilege file access.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Replace ad‑hoc email sharing with authenticated, auditable exchange.</li>
-                        <li><strong>Implementation:</strong> Cognito user pools + JWT → API Gateway + Lambda handlers performing policy checks; encrypted storage & WAF rules; structured CloudWatch logs.</li>
-                        <li><strong>Result:</strong> Consistent access auditing (per‑request identity + object key) and no public objects detected during review scans.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Replace ad‑hoc email sharing with authenticated, auditable exchange.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Cognito user pools + JWT → API Gateway + Lambda handlers performing policy checks; encrypted storage & WAF rules; structured CloudWatch logs.</li>
+                        <li class="result"><strong>Result:</strong> Consistent access auditing (per‑request identity + object key) and no public objects detected during review scans.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: React • Cognito • API Gateway • Lambda • EFS • KMS • WAF • CloudWatch</div>
                     <a href="https://github.com/MarzouguiAhmed9/Collaborative-File-Sharing-Platform" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                 </div>
             </div>
+            <!-- Hybrid OpenStack Private Cloud & AI Platform -->
             <div class="project-card">
                 <img src="images/openstack1.jpeg" class="project-img" alt="OpenStack Private Cloud">
                 <div class="project-title">Hybrid OpenStack Private Cloud & AI Platform</div>
                 <div class="p-3">
                     <p class="mb-2">Lab platform combining internal OpenStack resources with public cloud burst capability.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Provide on‑prem style control for experimentation while enabling overflow to public cloud.</li>
-                        <li><strong>Implementation:</strong> Multi‑node OpenStack (Nova, Neutron, Cinder) + Kubernetes for container workloads + Grafana dashboards for capacity (CPU/RAM/IO) + selective AWS integration for storage/compute bursts.</li>
-                        <li><strong>Result:</strong> Faster provisioning of test workloads (VMs in minutes vs manual multi‑step installs) and actionable capacity trends (e.g., CPU saturation forecast).</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Provide on‑prem style control for experimentation while enabling overflow to public cloud.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Multi‑node OpenStack (Nova, Neutron, Cinder) + Kubernetes + Grafana dashboards (capacity) + selective AWS integration.</li>
+                        <li class="result"><strong>Result:</strong> Faster provisioning (VMs in minutes vs manual multi‑step installs) and actionable capacity trends for forecasting saturation.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: OpenStack • Ansible • Kubernetes • Docker • MySQL • AWS EC2/S3 • Grafana</div>
                 </div>
             </div>
+            <!-- Spring Boot on AWS ECS Fargate -->
             <div class="project-card">
                 <img src="images/aws.jpeg" class="project-img" alt="Spring Boot on AWS ECS Fargate">
                 <div class="project-title">Spring Boot on AWS ECS Fargate</div>
                 <div class="p-3">
                     <p class="mb-2">Containerized Java service with managed compute & automated delivery.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Remove EC2 maintenance and simplify zero‑downtime updates.</li>
-                        <li><strong>Implementation:</strong> GitHub → CodePipeline/CodeBuild → image in ECR → ECS Fargate service w/ health checks; task defs versioned.</li>
-                        <li><strong>Result:</strong> Rolling deployments completed without connection errors; scaling policy kept p95 latency within target under synthetic load.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Remove EC2 maintenance and simplify zero‑downtime updates.</li>
+                        <li class="implementation"><strong>Implementation:</strong> GitHub → CodePipeline/Build → ECR → ECS Fargate service (health checks & versioned task defs).</li>
+                        <li class="result"><strong>Result:</strong> Rolling deployments succeeded without connection errors; scaling kept p95 latency within SLO under load.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Spring Boot • Docker • ECS Fargate • ECR • CodePipeline • CodeBuild</div>
                     <a href="https://github.com/MarzouguiAhmed9/spring-aws" target="_blank" class="btn btn-outline-success btn-sm mt-2">GitHub</a>
                 </div>
             </div>
+            <!-- Node.js Kubernetes CI/CD Pipeline -->
             <div class="project-card">
                 <img src="images/cicd.jpeg" class="project-img" alt="CI/CD Pipeline for Node.js on Kubernetes">
                 <div class="project-title">Node.js Kubernetes CI/CD Pipeline</div>
                 <div class="p-3">
                     <p class="mb-2">Quality‑gated delivery chain with observability hooks.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Introduce repeatable build/test/security checks before cluster deploy.</li>
-                        <li><strong>Implementation:</strong> Jenkins pipeline (lint, unit test, image build, scan, deploy), manifest templating & Slack notifications; runtime metrics exported.</li>
-                        <li><strong>Result:</strong> Faster feedback (tests + scans early) reduced late‑stage failures; easier traceability via build → deployment correlation labels.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Introduce repeatable build/test/security checks before cluster deploy.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Jenkins pipeline (lint, unit test, image build, scan, deploy) + Slack notifications & runtime metrics labeling.</li>
+                        <li class="result"><strong>Result:</strong> Earlier feedback reduced late failures; build → deploy traceability simplified incident analysis.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Docker • Kubernetes • Node.js • Static Analysis • Slack API</div>
                 </div>
             </div>
+            <!-- CI/CD Pipeline Optimization -->
             <div class="project-card">
                 <img src="images/cicd2.jpeg" class="project-img" alt="CI/CD Pipeline Optimization">
                 <div class="project-title">CI/CD Pipeline Optimization</div>
                 <div class="p-3">
                     <p class="mb-2">Refinement of an existing pipeline for speed and reliability.</p>
-                    <ul class="mb-2">
-                        <li><strong>Goal:</strong> Shorten build time and cut manual interventions.</li>
-                        <li><strong>Implementation:</strong> Parallelized independent stages, introduced dependency caching, immutable artifact promotion & lightweight health checks; added telemetry for stage duration and failure cause.</li>
-                        <li><strong>Result:</strong> Average pipeline completion < 5 min (down from ~11 min); manual approvals reduced ≈30% after automated quality gates.</li>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Shorten build time and cut manual interventions.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Parallel stages, dependency caching, immutable artifact promotion & stage telemetry.</li>
+                        <li class="result"><strong>Result:</strong> Avg pipeline < 5 min (from ~11 min); manual approvals reduced ≈30% via automated gates.</li>
                     </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Ansible • Docker • GitHub • AWS EC2 • Monitoring</div>
                 </div>
             </div>
@@ -829,6 +857,18 @@
             entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal'); obs.unobserve(e.target);} });
         },{threshold:.18});
         cards.forEach(c=>obs.observe(c));
+    })();
+    // Project bullet collapse toggles
+    (function(){
+        document.querySelectorAll('#projects .toggle-project').forEach(btn=>{
+            btn.addEventListener('click',()=>{
+                const list=btn.previousElementSibling; // ul
+                if(!list || !list.classList.contains('proj-points')) return;
+                const collapsed=list.classList.toggle('collapsed');
+                btn.textContent = collapsed ? 'More' : 'Less';
+                btn.setAttribute('data-state', collapsed? 'collapsed':'expanded');
+            });
+        });
     })();
 </script>
 </body>
