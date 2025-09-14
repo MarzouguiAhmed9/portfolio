@@ -182,7 +182,18 @@
         .workshop-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
         .workshop-card{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.12);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.22);transition:.25s;}
         .workshop-card:hover{transform:translateY(-6px);box-shadow:0 10px 32px rgba(124,58,237,0.28);}
-        .workshop-img{width:100%;height:190px;object-fit:cover;filter:brightness(.9);}
+        /* Removed image usage; new icon header */
+        .workshop-icon{
+            display:flex;align-items:center;justify-content:center;
+            height:160px;
+            background:linear-gradient(135deg,var(--accent-2),var(--accent));
+            position:relative;
+        }
+        .workshop-icon i{
+            font-size:4rem;
+            color:#fff;
+            text-shadow:0 6px 18px rgba(0,0,0,0.35);
+        }
         .workshop-body{padding:1.1rem 1.25rem 1.4rem;}
         .workshop-title{font-size:1.15rem;font-weight:700;color:var(--accent);margin-bottom:.35rem;}
         .workshop-meta{font-size:.7rem;letter-spacing:.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;}
@@ -597,12 +608,15 @@
             <div class="workshop-grid">
                 <!-- AWS Community Day -->
                 <div class="workshop-card">
-                    <img src="images/workshop1.jpg" alt="AWS Community Day" class="workshop-img">
+                    <!-- Replaced image with icon -->
+                    <div class="workshop-icon">
+                        <i class="fab fa-aws" aria-hidden="true"></i>
+                    </div>
                     <div class="workshop-body">
                         <div class="workshop-title">AWS Community Day</div>
                         <div class="workshop-meta">Community • Cloud Innovation</div>
                         <p style="font-size:.9rem;line-height:1.4;">
-                            Participated in deep‑dive sessions on serverless patterns, Well‑Architected practices and container security. Engaged with AWS mentors to refine cost optimization & resilience strategies applicable to real project architectures.
+                            I’m honored to have been part of AWS Community Day Tunisia 2025 at Esprit School of Business, connecting with brilliant minds in the cloud ecosystem. Grateful for the insights, workshops, and discussions that deepened my understanding of AWS technologies.
                         </p>
                         <div class="workshop-tags">
                             <span class="workshop-tag">Serverless</span>
@@ -614,12 +628,15 @@
                 </div>
                 <!-- Bal Des Projets d'Esprit -->
                 <div class="workshop-card">
-                    <img src="images/workshop2.jpg" alt="11ème édition du Bal Des Projets d'Esprit" class="workshop-img">
+                    <!-- Replaced image with icon -->
+                    <div class="workshop-icon">
+                        <i class="fas fa-award" aria-hidden="true"></i>
+                    </div>
                     <div class="workshop-body">
                         <div class="workshop-title">11ème Édition du Bal Des Projets d'Esprit</div>
                         <div class="workshop-meta">Competition • Engineering Showcase</div>
                         <p style="font-size:.9rem;line-height:1.4;">
-                            Showcased an infrastructure & automation project emphasizing scalability, observability and secure delivery workflows. Received feedback from industry panel on deployment maturity and reliability patterns.
+                            Honored to have been chosen to showcase our work at this year’s "Bal des Projets"—an amazing opportunity to present our work alongside so many talented peers.
                         </p>
                         <div class="workshop-tags">
                             <span class="workshop-tag">DevOps</span>
@@ -630,9 +647,7 @@
                     </div>
                 </div>
             </div>
-            <p class="mt-4" style="font-size:.7rem;color:var(--muted);">
-                (Images may be placeholders: replace workshop1.jpg / workshop2.jpg with actual event photos.)
-            </p>
+            <!-- Removed placeholder image note since icons now used -->
         </div>
     </section>
     <div class="divider"></div>
