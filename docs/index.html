@@ -238,7 +238,7 @@
         /* Stats & tags polish */
         #projects .project-stat { background: linear-gradient(135deg, rgba(124,58,237,0.35), rgba(34,211,238,0.35)); border:none; }
         #projects .stack-tag { background:rgba(34,211,238,0.18); border-color:rgba(34,211,238,0.55); transition:.35s; }
-        #projects .stack-tag:hover { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.05); }
+        #projects .stack-tag:hover { background:linear-gradient(135deg,var(--accent),var,--accent-2); color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.05); }
         /* Filter bar visual polish */
         #projects .project-filters { background: rgba(255,255,255,0.05); padding:.85rem 1rem; border-radius:999px; backdrop-filter:blur(10px); box-shadow:0 4px 18px -6px rgba(0,0,0,.45); }
         #projects .filter-btn { position:relative; overflow:hidden; }
@@ -250,7 +250,7 @@
         /* Highlight & collapse for project bullet lists */
         #projects .proj-points{list-style:none;padding-left:0;margin:0 0 .6rem;}
         #projects .proj-points li{position:relative;padding:.45rem .7rem .45rem 1.1rem;font-size:.72rem;line-height:1.5;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:.4rem;transition:.35s;}
-        #projects .proj-points li:before{content:"";position:absolute;left:.45rem;top:.7rem;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 0 3px rgba(255,255,255,0.05);}
+        #projects .proj-points li:before{content:"";position:absolute;left:.45rem;top:.7rem;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var,--accent);box-shadow:0 0 0 3px rgba(255,255,255,0.05);}
         #projects .proj-points li.result{background:linear-gradient(135deg,rgba(34,211,238,0.20),rgba(124,58,237,0.18));border:1px solid rgba(34,211,238,0.45);box-shadow:0 0 0 1px rgba(124,58,237,0.25) inset;}
         #projects .proj-points li.result:before{box-shadow:0 0 0 3px rgba(124,58,237,0.25);}
         #projects .proj-points li:hover{background:rgba(34,211,238,0.14);}
@@ -404,17 +404,16 @@
                 <div class="project-title">Scalable AWS VPC Infrastructure (Terraform)</div>
                 <div class="p-3">
                     <p class="mb-2" style="font-size:.9rem;">Modular, policy‑driven IaC to spin up consistent, secure multi‑environment AWS networking in minutes.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">≈70% Faster</span>
-                        <span class="kpi-badge alt">Modular</span>
-                        <span class="kpi-badge sec">Validated Inputs</span>
-                        <span class="kpi-badge rev">Idempotent</span>
+                    <div class="d-flex flex-wrap gap-2 mb-2" style="font-size:.6rem;">
+                        <span class="badge bg-info text-dark" style="background:linear-gradient(135deg,var(--accent),var(--accent-2));">≈70% Faster Provisioning</span>
+                        <span class="badge bg-secondary" style="background:rgba(34,211,238,0.25);color:var(--accent);">Idempotent Runs</span>
+                        <span class="badge bg-secondary" style="background:rgba(124,58,237,0.30);color:#fff;">Governed CIDR / Naming</span>
                     </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Eliminate manual console builds and enforce repeatable, scalable network baselines (dev / stage / prod).</li>
-                        <li class="implementation"><span class="proj-label">Architecture</span> Terraform modules: VPC, public/private subnets (2 AZ), route tables, IGW, NAT GW, security groups, bastion EC2, ALB, remote state (S3 + DynamoDB lock), input validation (CIDR & naming guards).</li>
-                        <li class="implementation"><span class="proj-label">Process</span> Plan → gated review → apply; reusable variables & tags; environment promotion via isolated state backends.</li>
-                        <li class="result"><span class="proj-label">Result</span> Full stack in ~4 min (prev ~13 min), zero unintended drifts on re‑apply, standardized segmentation ready for app & database tiers.</li>
+                        <li class="goal"><strong>Goal:</strong> Eliminate manual console builds and enforce repeatable, scalable network baselines (dev / stage / prod).</li>
+                        <li class="implementation"><strong>Architecture:</strong> Terraform modules: VPC, public/private subnets (2 AZ), route tables, IGW, NAT GW, security groups, bastion EC2, ALB, remote state (S3 + DynamoDB lock), input validation (CIDR & naming guards).</li>
+                        <li class="implementation"><strong>Process:</strong> Plan → gated review → apply; reusable variables & tags; environment promotion via isolated state backends.</li>
+                        <li class="result"><strong>Results:</strong> Full stack in ~4 min (prev ~13 min), zero unintended drifts on re‑apply, standardized segmentation ready for app & database tiers.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Terraform • AWS VPC • Subnets • ALB • NAT • SG • Remote State • Validation</div>
@@ -428,16 +427,10 @@
                 <div class="project-title">Automated KVM Virtual Lab</div>
                 <div class="p-3">
                     <p class="mb-2">Local reproducible lab for rapid DevOps experimentation (clusters, CI/CD, networking).</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">&lt;10m Build</span>
-                        <span class="kpi-badge alt">Reproducible</span>
-                        <span class="kpi-badge sec">Automated Keys</span>
-                        <span class="kpi-badge rev">Fast Teardown</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Reduce manual multi‑VM setup friction for testing pipelines & container stacks.</li>
-                        <li class="implementation"><span class="proj-label">Implementation</span> Ansible playbooks orchestrating libvirt networks, cloud‑init userdata, SSH keys, package bootstrap & tagging.</li>
-                        <li class="result"><span class="proj-label">Result</span> Environment build time dropped from “several hours” (manual) to &lt; 10 min; teardown/recreate cycle encourages safer experimentation.</li>
+                        <li class="goal"><strong>Goal:</strong> Reduce manual multi‑VM setup friction for testing pipelines & container stacks.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Ansible playbooks orchestrating libvirt networks, cloud‑init userdata, SSH keys, package bootstrap & tagging.</li>
+                        <li class="result"><strong>Result:</strong> Environment build time dropped from “several hours” (manual) to < 10 min; teardown/recreate cycle encourages safer experimentation.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Ansible • KVM/libvirt • Cloud-init • Linux Net • Automation</div>
@@ -451,16 +444,10 @@
                 <div class="project-title">AWS 3‑Tier Architecture</div>
                 <div class="p-3">
                     <p class="mb-2">Reference deployment pattern for a small stateless web/API workload with managed database.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">HA Design</span>
-                        <span class="kpi-badge alt">Multi‑AZ</span>
-                        <span class="kpi-badge sec">Hardened SG</span>
-                        <span class="kpi-badge rev">Scalable</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Provide segregated layers (web / app / data) with high availability.</li>
-                        <li class="implementation"><span class="proj-label">Architecture</span> Public & private subnets, SG/NACL hardening, ALB + Auto Scaling, Aurora MySQL (Multi‑AZ) & CloudWatch alarms.</li>
-                        <li class="result"><span class="proj-label">Result</span> Achieved zone failure resilience (simulated AZ shutdown) with uninterrupted app response; baseline latency stable under auto scale events.</li>
+                        <li class="goal"><strong>Goal:</strong> Provide segregated layers (web / app / data) with high availability.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Public & private subnets, SG/NACL hardening, ALB + Auto Scaling, Aurora MySQL (Multi‑AZ) & CloudWatch alarms.</li>
+                        <li class="result"><strong>Result:</strong> Achieved zone failure resilience (simulated AZ shutdown) with uninterrupted app response; baseline latency stable under auto scale events.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: AWS VPC • EC2 • ALB • ASG • Aurora MySQL • IAM • CloudWatch</div>
@@ -497,16 +484,10 @@
                 <div class="project-title">Serverless Secure File Sharing Platform</div>
                 <div class="p-3">
                     <p class="mb-2">Low‑ops collaboration backend enforcing least‑privilege file access.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">Serverless</span>
-                        <span class="kpi-badge alt">Least Privilege</span>
-                        <span class="kpi-badge sec">Auditable</span>
-                        <span class="kpi-badge rev">Encrypted</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Replace ad‑hoc email sharing with authenticated, auditable exchange.</li>
-                        <li class="implementation"><span class="proj-label">Implementation</span> Cognito user pools + JWT → API Gateway + Lambda handlers performing policy checks; encrypted storage & WAF rules; structured CloudWatch logs.</li>
-                        <li class="result"><span class="proj-label">Result</span> Consistent access auditing (per‑request identity + object key) and no public objects detected during review scans.</li>
+                        <li class="goal"><strong>Goal:</strong> Replace ad‑hoc email sharing with authenticated, auditable exchange.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Cognito user pools + JWT → API Gateway + Lambda handlers performing policy checks; encrypted storage & WAF rules; structured CloudWatch logs.</li>
+                        <li class="result"><strong>Result:</strong> Consistent access auditing (per‑request identity + object key) and no public objects detected during review scans.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: React • Cognito • API Gateway • Lambda • EFS • KMS • WAF • CloudWatch</div>
@@ -519,16 +500,10 @@
                 <div class="project-title">Hybrid OpenStack Private Cloud & AI Platform</div>
                 <div class="p-3">
                     <p class="mb-2">Lab platform combining internal OpenStack resources with public cloud burst capability.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">Hybrid</span>
-                        <span class="kpi-badge alt">Capacity Dashboards</span>
-                        <span class="kpi-badge sec">Multi‑Node</span>
-                        <span class="kpi-badge rev">Faster Provision</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Provide on‑prem style control for experimentation while enabling overflow to public cloud.</li>
-                        <li class="implementation"><span class="proj-label">Implementation</span> Multi‑node OpenStack (Nova, Neutron, Cinder) + Kubernetes + Grafana dashboards (capacity) + selective AWS integration.</li>
-                        <li class="result"><span class="proj-label">Result</span> Faster provisioning (VMs in minutes vs manual multi‑step installs) and actionable capacity trends for forecasting saturation.</li>
+                        <li class="goal"><strong>Goal:</strong> Provide on‑prem style control for experimentation while enabling overflow to public cloud.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Multi‑node OpenStack (Nova, Neutron, Cinder) + Kubernetes + Grafana dashboards (capacity) + selective AWS integration.</li>
+                        <li class="result"><strong>Result:</strong> Faster provisioning (VMs in minutes vs manual multi‑step installs) and actionable capacity trends for forecasting saturation.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: OpenStack • Ansible • Kubernetes • Docker • MySQL • AWS EC2/S3 • Grafana</div>
@@ -540,16 +515,10 @@
                 <div class="project-title">Spring Boot on AWS ECS Fargate</div>
                 <div class="p-3">
                     <p class="mb-2">Containerized Java service with managed compute & automated delivery.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">Rolling Deploy</span>
-                        <span class="kpi-badge alt">Managed Compute</span>
-                        <span class="kpi-badge sec">Health Checks</span>
-                        <span class="kpi-badge rev">Scales</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Remove EC2 maintenance and simplify zero‑downtime updates.</li>
-                        <li class="implementation"><span class="proj-label">Pipeline</span> GitHub → CodePipeline/Build → ECR → ECS Fargate service (health checks & versioned task defs).</li>
-                        <li class="result"><span class="proj-label">Result</span> Rolling deployments succeeded without connection errors; scaling kept p95 latency within SLO under load.</li>
+                        <li class="goal"><strong>Goal:</strong> Remove EC2 maintenance and simplify zero‑downtime updates.</li>
+                        <li class="implementation"><strong>Implementation:</strong> GitHub → CodePipeline/Build → ECR → ECS Fargate service (health checks & versioned task defs).</li>
+                        <li class="result"><strong>Result:</strong> Rolling deployments succeeded without connection errors; scaling kept p95 latency within SLO under load.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Spring Boot • Docker • ECS Fargate • ECR • CodePipeline • CodeBuild</div>
@@ -562,16 +531,10 @@
                 <div class="project-title">Node.js Kubernetes CI/CD Pipeline</div>
                 <div class="p-3">
                     <p class="mb-2">Quality‑gated delivery chain with observability hooks.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">Quality Gates</span>
-                        <span class="kpi-badge alt">Automated</span>
-                        <span class="kpi-badge sec">Scanned</span>
-                        <span class="kpi-badge rev">Traceable</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Introduce repeatable build/test/security checks before cluster deploy.</li>
-                        <li class="implementation"><span class="proj-label">Pipeline</span> Jenkins pipeline (lint, unit test, image build, scan, deploy) + Slack notifications & runtime metrics labeling.</li>
-                        <li class="result"><span class="proj-label">Result</span> Earlier feedback reduced late failures; build → deploy traceability simplified incident analysis.</li>
+                        <li class="goal"><strong>Goal:</strong> Introduce repeatable build/test/security checks before cluster deploy.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Jenkins pipeline (lint, unit test, image build, scan, deploy) + Slack notifications & runtime metrics labeling.</li>
+                        <li class="result"><strong>Result:</strong> Earlier feedback reduced late failures; build → deploy traceability simplified incident analysis.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Docker • Kubernetes • Node.js • Static Analysis • Slack API</div>
@@ -583,19 +546,36 @@
                 <div class="project-title">CI/CD Pipeline Optimization</div>
                 <div class="p-3">
                     <p class="mb-2">Refinement of an existing pipeline for speed and reliability.</p>
-                    <div class="kpi-badges">
-                        <span class="kpi-badge">Faster</span>
-                        <span class="kpi-badge alt">Parallel</span>
-                        <span class="kpi-badge sec">Immutable</span>
-                        <span class="kpi-badge rev">Less Manual</span>
-                    </div>
                     <ul class="mb-2 proj-points collapsed">
-                        <li class="goal"><span class="proj-label">Goal</span> Shorten build time and cut manual interventions.</li>
-                        <li class="implementation"><span class="proj-label">Implementation</span> Parallel stages, dependency caching, immutable artifact promotion & stage telemetry.</li>
-                        <li class="result"><span class="proj-label">Result</span> Avg pipeline &lt; 5 min (from ~11 min); manual approvals reduced ≈30% via automated gates.</li>
+                        <li class="goal"><strong>Goal:</strong> Shorten build time and cut manual interventions.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Parallel stages, dependency caching, immutable artifact promotion & stage telemetry.</li>
+                        <li class="result"><strong>Result:</strong> Avg pipeline < 5 min (from ~11 min); manual approvals reduced ≈30% via automated gates.</li>
                     </ul>
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: Jenkins • Ansible • Docker • GitHub • AWS EC2 • Monitoring</div>
+                </div>
+            </div>
+            <!-- DVC ML Pipeline Project -->
+            <div class="project-card">
+                <img src="images/mlops.png" class="project-img" alt="DVC ML Pipeline">
+                <div class="project-title">Reproducible Spam Detection ML Pipeline (DVC & MLOps)</div>
+                <div class="p-3">
+                    <p class="mb-2">End-to-end machine learning pipeline for spam detection, fully automated and version-controlled with DVC and MLOps best practices.</p>
+                    <div class="kpi-badges">
+                        <span class="kpi-badge">Reproducible</span>
+                        <span class="kpi-badge alt">Automated</span>
+                        <span class="kpi-badge sec">Versioned Data</span>
+                        <span class="kpi-badge rev">S3 Storage</span>
+                    </div>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><span class="proj-label">Goal</span> Build a robust, reproducible ML pipeline for spam detection with automated experiment tracking and deployment.</li>
+                        <li class="implementation"><span class="proj-label">Pipeline</span> Stages: data ingestion, preprocessing, feature engineering, model training, evaluation. All tracked and automated with DVC.</li>
+                        <li class="implementation"><span class="proj-label">Automation</span> dvc.yaml defines stages/dependencies; dvc repro runs only changed steps; dvc.lock/params.yaml ensure reproducibility and easy tuning.</li>
+                        <li class="result"><span class="proj-label">Result</span> No lost work, faster iteration, fully versioned experiments, and confident, collaborative deployment. Data and models stored on S3 for easy scaling.</li>
+                    </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
+                    <div class="small" style="font-weight:600;color:var(--accent);">Stack: DVC • Python • MLOps • S3 • dvclive</div>
+                    <a href="https://lnkd.in/eP2FX-CP" target="_blank" class="btn btn-outline-success btn-sm mt-2">LinkedIn Article</a>
                 </div>
             </div>
         </div>
@@ -940,4 +920,3 @@
 </script>
 </body>
 </html>
-
