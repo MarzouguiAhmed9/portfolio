@@ -234,7 +234,7 @@
         /* Bullet refinement */
         #projects .project-outcomes { list-style:none; padding-left:0; }
         #projects .project-outcomes li { position:relative; padding-left:16px; font-size:.74rem; line-height:1.55; }
-        #projects .project-outcomes li:before { content:''; position:absolute; left:0; top:.55em; width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,var(--accent-2),var(--accent)); box-shadow:0 0 0 3px rgba(255,255,255,0.06); }
+        #projects .project-outcomes li:before { content:''; position:absolute; left:0; top:.55em; width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,var(--accent-2),var,--accent); box-shadow:0 0 0 3px rgba(255,255,255,0.06); }
         /* Stats & tags polish */
         #projects .project-stat { background: linear-gradient(135deg, rgba(124,58,237,0.35), rgba(34,211,238,0.35)); border:none; }
         #projects .stack-tag { background:rgba(34,211,238,0.18); border-color:rgba(34,211,238,0.55); transition:.35s; }
@@ -576,6 +576,22 @@
                     <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
                     <div class="small" style="font-weight:600;color:var(--accent);">Stack: DVC • Python • MLOps • S3 • dvclive</div>
                     <a href="https://lnkd.in/eP2FX-CP" target="_blank" class="btn btn-outline-success btn-sm mt-2">Github </a>
+                </div>
+            </div>
+            <!-- Service Health Checker API (Go) -->
+            <div class="project-card">
+                <img src="images/go.png" class="project-img" alt="Service Health Checker API">
+                <div class="project-title">Service Health Checker API</div>
+                <div class="p-3">
+                    <p class="mb-2" style="font-size:.9rem;">Lightweight Go service for automated health monitoring and metrics exposure.</p>
+                    <ul class="mb-2 proj-points collapsed">
+                        <li class="goal"><strong>Goal:</strong> Enable real-time monitoring of internal services and websites with minimal overhead.</li>
+                        <li class="implementation"><strong>Implementation:</strong> Periodic HTTP checks, JSON status endpoint, Prometheus metrics integration, and alert-ready Grafana dashboards.</li>
+                        <li class="result"><strong>Result:</strong> Instant visibility into service health, rapid incident detection, and seamless integration with existing observability stack.</li>
+                    </ul>
+                    <button class="btn btn-outline-info btn-sm toggle-project" data-state="collapsed">Read More</button>
+                    <div class="small" style="font-weight:600;color:var(--accent);">Stack: Go • HTTP • JSON • Prometheus • Grafana</div>
+                    <!-- Add GitHub link if available -->
                 </div>
             </div>
         </div>
